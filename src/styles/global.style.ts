@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
         /* Tamanhos */
         --sectionHeight: 700px;
         --headerHeight: 600px;
-        --footerHeight: 200px;
+        --footerHeight: 300px;
         /* Cores */
         /* Cores de fundo1 */
         --bgColor1o1: rgb(247, 253, 255);
