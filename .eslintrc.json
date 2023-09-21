@@ -30,6 +30,10 @@
     "no-console": "off",
     "no-underscore-dangle": "off",
     "prefer-destructuring": "off",
-    "no-return-await": "off"
+    "no-return-await": "off",
+    "import/no-extraneous-dependencies": [
+      "off",
+      { "devDependencies": false, "optionalDependencies": false, "peerDependencies": false }
+    ]
   }
 }
