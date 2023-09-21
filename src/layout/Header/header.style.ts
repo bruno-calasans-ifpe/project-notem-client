@@ -40,7 +40,6 @@ export const BottomHeader = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-grow: 1;
-  color: var(--letterColor1o1);
 `
 
 export const WelcomeMsgArea = styled.div`

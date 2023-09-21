@@ -8,7 +8,7 @@ function Header() {
       <TopHeader>
         <LogoArea id="logo">
           <Image
-            src="./imgs/notem-logotype.jpg"
+            src="./imgs/notem-logotype.png"
             alt="notem logo"
             w={150}
           />
@@ -36,6 +36,7 @@ function Header() {
           </Group>
         </MenuArea>
       </TopHeader>
+
       <BottomHeader>
         <WelcomeMsgArea>
           <Text
@@ -45,8 +46,8 @@ function Header() {
             c="dark"
           >
             Vai curtir um dia de praia? Que tal aproveitar tudo o que há de melhor em termos de produtos e serviços, na
-            praia que você escolheu<Anchor href="#obs1">¹</Anchor>, sem ter que ficar procurando por eles? No NOTem você
-            encontra diversos vendedores dispostos a levar de tudo<Anchor href="#obs2">²</Anchor>, bem onde você está!
+            praia que você escolheu<Anchor href="#obs1">*</Anchor>, sem ter que ficar procurando por eles? No NOTem você
+            encontra diversos vendedores dispostos a levar de tudo<Anchor href="#obs2">**</Anchor>, bem onde você está!
           </Text>
 
           <Button
@@ -70,9 +71,8 @@ function Header() {
             fs="italic"
             c="dark"
             fw="bold"
-            ff="cursive"
           >
-            1* dentro as praias disponíveis
+            * dentro as praias disponíveis
           </Text>
           <Text
             id="obs2"
@@ -80,9 +80,8 @@ function Header() {
             fs="italic"
             c="dark"
             fw="bold"
-            ff="cursive"
           >
-            2* dentro do que o vendedor tem a oferecer
+            ** dentro do que o vendedor tem a oferecer
           </Text>
         </ObsArea>
       </BottomHeader>
