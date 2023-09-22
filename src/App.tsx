@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // Components
-import { Title, Text, Paper } from '@mantine/core'
+import { Title, Text, Paper, Group, List, ThemeIcon, Button } from '@mantine/core'
+import { IconCheck, IconArrowBadgeRightFilled } from '@tabler/icons-react'
 import { Carousel } from '@mantine/carousel'
 import Section from './components/Section/Section'
 
@@ -40,9 +41,10 @@ function App() {
       <Header />
       <Main>
         <Section
-          title="Onde já atuamos"
+          id="beach-range"
+          title="Praias que usam nosso app"
           subtitle="Já atuamos em mais de 1.0000 de praias! Confira algumas delas."
-          bgColor="#FFAC29"
+          bgColor="#FB9C31"
         >
           <Carousel
             withIndicators
@@ -92,148 +94,185 @@ function App() {
             ))}
           </Carousel>
         </Section>
-        {/* <Section
-          title="Para quem é esse app?"
-          subtitle="Confira os benefícios desse app"
-          bgColor="#ac7a42"
+        <Section
+          id="our-features"
+          title="Recursos do nosso app"
+          subtitle="Confira o que temos a oferecer"
+          // titleColor="dark"
+          // subtitleColor="snow"
+          bgColor="#228BE6"
         >
-          <Carousel
-            withIndicators
-            height="400px"
-            slideGap="sm"
-            align="center"
-            loop
-          >
-            <Carousel.Slide h="100%">
-              <Paper
-                shadow="md"
-                p="xl"
-                h="100%"
-                w="100%"
-                style={{
-                  backgroundImage: 'url("/carousel-imgs/beach1.jpg")',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundAttachment: 'fixed',
-                  backgroundSize: 'cover',
-                }}
-              >
-                <div>
-                  <Title
-                    order={2}
-                    c="white"
+          <Group justify="space-around">
+            <Paper
+              shadow="md"
+              p="xl"
+              w="fit-content"
+              h="300px"
+            >
+              <div>
+                <Title
+                  order={1}
+                  c="grape"
+                  fw="bold"
+                >
+                  Cliente
+                </Title>
+                <List>
+                  <List.Item
+                    icon={
+                      <ThemeIcon
+                        color="green"
+                        size={24}
+                        radius="xl"
+                        variant="light"
+                      >
+                        <IconCheck />
+                      </ThemeIcon>
+                    }
                   >
-                    Praia da Marinha, Portugal
-                  </Title>
-                  <Text
-                    c="pink"
-                    fw="bold"
-                    size="lg"
+                    Pode isso
+                  </List.Item>
+                  <List.Item
+                    icon={
+                      <ThemeIcon
+                        color="green"
+                        size={24}
+                        radius="xl"
+                        variant="light"
+                      >
+                        <IconCheck />
+                      </ThemeIcon>
+                    }
                   >
-                    Between the coastal towns of Lagoa and Carvoeiro sits the "Golden Beach" of Portugal.
-                  </Text>
-                </div>
-              </Paper>
-            </Carousel.Slide>
-            <Carousel.Slide>
-              <Paper
-                shadow="md"
-                p="xl"
-                radius="md"
-                h="100%"
-                style={{
-                  backgroundImage: 'url("/carousel-imgs/beach1.jpg")',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundAttachment: 'fixed',
-                  backgroundSize: 'cover',
-                }}
-              >
-                <div>
-                  <Title
-                    order={2}
-                    c="white"
+                    Pode isso
+                  </List.Item>
+                  <List.Item
+                    icon={
+                      <ThemeIcon
+                        color="green"
+                        size={24}
+                        radius="xl"
+                        variant="light"
+                      >
+                        <IconCheck />
+                      </ThemeIcon>
+                    }
                   >
-                    Placencia Beach, Belize
-                  </Title>
-                  <Text
-                    c="pink"
-                    fw="bold"
-                    size="lg"
+                    Pode isso
+                  </List.Item>
+                  <List.Item
+                    icon={
+                      <ThemeIcon
+                        color="green"
+                        size={24}
+                        radius="xl"
+                        variant="light"
+                      >
+                        <IconCheck />
+                      </ThemeIcon>
+                    }
                   >
-                    Placencia Beach is located off the tip of the Placencia Peninsula along the southeastern tip of
-                    Belize
-                  </Text>
-                </div>
-              </Paper>
-            </Carousel.Slide>
-            <Carousel.Slide>
-              <Paper
-                shadow="md"
-                p="xl"
-                radius="md"
-                h="100%"
-                style={{
-                  backgroundImage: 'url("/carousel-imgs/beach2.jpg")',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundAttachment: 'fixed',
-                  backgroundSize: 'cover',
-                }}
-              >
-                <div>
-                  <Title
-                    order={2}
-                    c="white"
+                    Pode isso
+                  </List.Item>
+                </List>
+                <br />
+                <Button
+                  component="a"
+                  href="/register?type=client"
+                  bg="grape"
+                  fullWidth
+                  rightSection={<IconArrowBadgeRightFilled />}
+                >
+                  <Text fw="bold">Quero ser Cliente</Text>
+                </Button>
+              </div>
+            </Paper>
+            <Paper
+              shadow="md"
+              p="xl"
+              w="fit-content"
+              h="300px"
+            >
+              <div>
+                <Title
+                  order={1}
+                  c="indigo"
+                  fw="bold"
+                >
+                  Vendedor
+                </Title>
+                <List>
+                  <List.Item
+                    icon={
+                      <ThemeIcon
+                        color="green"
+                        size={24}
+                        radius="xl"
+                        variant="light"
+                      >
+                        <IconCheck />
+                      </ThemeIcon>
+                    }
                   >
-                    Navagio Bay, Zakynthos, Greece
-                  </Title>
-                  <Text
-                    c="pink"
-                    fw="bold"
-                    size="lg"
+                    Pode isso
+                  </List.Item>
+                  <List.Item
+                    icon={
+                      <ThemeIcon
+                        color="green"
+                        size={24}
+                        radius="xl"
+                        variant="light"
+                      >
+                        <IconCheck />
+                      </ThemeIcon>
+                    }
                   >
-                    Also known as Shipwreck Cove, Navagio Bay, Zakynthos, Greece touts brilliant blue waters surrounded
-                    by towering cliffs.
-                  </Text>
-                </div>
-              </Paper>
-            </Carousel.Slide>
-            <Carousel.Slide>
-              <Paper
-                shadow="md"
-                p="xl"
-                radius="md"
-                h="100%"
-                style={{
-                  backgroundImage: 'url("/carousel-imgs/beach3.jpg")',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundAttachment: 'fixed',
-                  backgroundSize: 'cover',
-                }}
-              >
-                <div>
-                  <Title
-                    order={2}
-                    c="white"
+                    Pode isso
+                  </List.Item>
+                  <List.Item
+                    icon={
+                      <ThemeIcon
+                        color="green"
+                        size={24}
+                        radius="xl"
+                        variant="light"
+                      >
+                        <IconCheck />
+                      </ThemeIcon>
+                    }
                   >
-                    St. Lucia
-                  </Title>
-                  <Text
-                    c="pink"
-                    fw="bold"
-                    size="lg"
+                    Pode isso
+                  </List.Item>
+                  <List.Item
+                    icon={
+                      <ThemeIcon
+                        color="green"
+                        size={24}
+                        radius="xl"
+                        variant="light"
+                      >
+                        <IconCheck />
+                      </ThemeIcon>
+                    }
                   >
-                    St. Lucia may have world-class beaches, but the beach itself is best known for the massive pitons
-                    (mountainous volcanic plugs that are dormant) looming in the background. Talk about a beautiful
-                    backdrop.
-                  </Text>
-                </div>
-              </Paper>
-            </Carousel.Slide>
-          </Carousel>
-        </Section> */}
+                    Pode isso
+                  </List.Item>
+                </List>
+                <br />
+                <Button
+                  component="a"
+                  href="/register?type=vendor"
+                  bg="indigo"
+                  fullWidth
+                  rightSection={<IconArrowBadgeRightFilled />}
+                >
+                  <Text fw="bold">Quero ser Vendedor</Text>
+                </Button>
+              </div>
+            </Paper>
+          </Group>
+        </Section>
       </Main>
       <Footer />
     </>
