@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components'
+import fixContentWidth from '../../styles/fixContentWidth'
 
 export const Container = styled.footer`
   display: flex;
@@ -14,8 +15,9 @@ export const UpperFooter = styled.div`
   justify-content: space-around;
   align-items: center;
   gap: 20px;
-  width: 100%;
   flex-grow: 2;
+  width: 100%;
+  ${fixContentWidth()}
 `
 export const LinksArea = styled.div`
   display: flex;
@@ -41,6 +43,7 @@ export const BottomFooter = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   gap: 20px;
-  width: 100%;
   flex-grow: 1;
+  width: 100%;
+  ${fixContentWidth()}
 `
