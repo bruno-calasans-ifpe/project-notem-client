@@ -3,6 +3,7 @@ import { Title, Text } from '@mantine/core'
 import { Container, ContentArea, HeaderArea } from './section.style'
 
 type SectionProps = {
+  id?: string
   title: string
   titleColor?: React.CSSProperties['color']
   subtitle?: string
@@ -13,7 +14,10 @@ type SectionProps = {
 
 function Section({ children, ...props }: SectionProps) {
   return (
-    <Container style={{ backgroundColor: props.bgColor ?? 'white' }}>
+    <Container
+      id={props.id}
+      style={{ backgroundColor: props.bgColor ?? 'white' }}
+    >
       <HeaderArea>
         <Title
           order={1}
