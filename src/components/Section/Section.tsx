@@ -1,24 +1,38 @@
 /* eslint-disable react/require-default-props */
-import { Title } from '@mantine/core'
-import { Container, SectionContent } from './section.style'
+import { Title, Text } from '@mantine/core'
+import { Container, ContentArea, HeaderArea } from './section.style'
 
 type SectionProps = {
   title: string
+  titleColor?: React.CSSProperties['color']
+  subtitle?: string
+  subtitleColor?: React.CSSProperties['color']
   children: React.ReactNode
-  bgColor?: string
+  bgColor?: React.CSSProperties['color']
 }
 
-function Section({ title, bgColor, children }: SectionProps) {
+function Section({ children, ...props }: SectionProps) {
   return (
-    <Container style={{ backgroundColor: bgColor ?? 'white' }}>
-      <Title
-        order={1}
-        c="dark"
-        ff="var(--font1)"
-      >
-        {title}
-      </Title>
-      <SectionContent>{children}</SectionContent>
+    <Container style={{ backgroundColor: props.bgColor ?? 'white' }}>
+      <HeaderArea>
+        <Title
+          order={1}
+          c={props.titleColor ?? 'snow'}
+          ff="var(--font1)"
+        >
+          {props.title}
+        </Title>
+        {props.subtitle && (
+          <Text
+            c={props.subtitleColor ?? 'dark'}
+            ff="var(--font2)"
+            fw="bold"
+          >
+            {props.subtitle}
+          </Text>
+        )}
+      </HeaderArea>
+      <ContentArea>{children}</ContentArea>
     </Container>
   )
 }
