@@ -6,6 +6,7 @@ import { createRoot } from 'react-dom/client'
 // mantine
 import { MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css'
+import '@mantine/carousel/styles.css'
 
 // styled components
 import GlobalStyle from './styles/global.style'

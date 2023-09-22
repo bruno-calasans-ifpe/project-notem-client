@@ -2,6 +2,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.main`
-  height: 300vh;
-  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 200vh;
 `

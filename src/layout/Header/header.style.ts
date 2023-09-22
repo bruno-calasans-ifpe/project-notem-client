@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components'
+import ContentFix from '../../components/ContentFix/ContentFix'
 
 export const Container = styled.header`
   background-color: lightblue;
@@ -19,7 +20,8 @@ export const Container = styled.header`
 export const TopHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  justify-self: flex-start;
+  ${ContentFix}
+  width: 100%;
 `
 
 export const LogoArea = styled.div`
@@ -40,6 +42,7 @@ export const BottomHeader = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-grow: 1;
+  ${ContentFix}
 `
 
 export const WelcomeMsgArea = styled.div`
