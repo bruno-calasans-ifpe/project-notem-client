@@ -10,13 +10,19 @@ import Main from './layout/Main/Main'
 import Footer from './layout/Footer/Footer'
 
 // Views
+import Register from './view/Register/Register'
 
 function App() {
   return (
     <>
       <Header />
       <Main>
-        <Routes></Routes>
+        <Routes>
+          <Route
+            path="/register"
+            element={<Register />}
+          ></Route>
+        </Routes>
       </Main>
       <Footer />
     </>
