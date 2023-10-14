@@ -1,6 +1,6 @@
-import { TextInput, Button, Group, Box, Flex, PasswordInput, Anchor, LoadingOverlay } from '@mantine/core'
+import { TextInput, Button, Group, Box, Flex, PasswordInput, Anchor, LoadingOverlay, Divider } from '@mantine/core'
 import { useForm } from '@mantine/form'
-import { IconAt, IconLock, IconLogin } from '@tabler/icons-react'
+import { IconAt, IconLock, IconLogin, IconBrandGoogle } from '@tabler/icons-react'
 import { useDisclosure } from '@mantine/hooks'
 
 type LoginFormInputs = {
@@ -22,11 +22,30 @@ function LoginForm() {
     },
   })
 
-  const loginHandler = async (inputs: LoginFormInputs) => {
+  const loginHandler = async () => {
+    // checking form
+    const { hasErrors } = form.validate()
+
+    if (hasErrors) {
+      return
+    }
+
     // start loading
     start()
 
     // todo login api
+    console.log(form.values)
+
+    // stop loading
+    stop()
+  }
+
+  const googleLoginHandler = async () => {
+    // start loading
+    start()
+
+    // todo login api
+    console.log(form.values)
 
     // stop loading
     stop()
@@ -36,14 +55,13 @@ function LoginForm() {
     <Box
       maw="100%"
       mx="md"
-      //   pos="relative"
     >
       <LoadingOverlay
         visible={loading}
         zIndex={1000}
         overlayProps={{ radius: 'sm', blur: 2 }}
       />
-      <form onSubmit={form.onSubmit(loginHandler)}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <Flex
           direction="column"
           gap={10}
@@ -71,13 +89,34 @@ function LoginForm() {
           mt="md"
         >
           <Anchor href="/forgot-password">Esqueci minha senha</Anchor>
+          <Anchor href="/register">Não tenho conta</Anchor>
+        </Group>
+
+        <Flex
+          direction="column"
+          gap={10}
+          mt="md"
+        >
           <Button
-            leftSection={<IconLogin size={16} />}
+            fullWidth
+            // leftSection={<IconLogin size={16} />}
             type="submit"
+            onClick={loginHandler}
           >
             Entrar
           </Button>
-        </Group>
+
+          <Divider label="Ou" />
+
+          <Button
+            leftSection={<IconBrandGoogle size={16} />}
+            type="submit"
+            color="#DC4234"
+            onClick={googleLoginHandler}
+          >
+            Entrar com Google
+          </Button>
+        </Flex>
       </form>
     </Box>
   )
