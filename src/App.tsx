@@ -10,13 +10,19 @@ import Main from './layout/Main/Main'
 import Footer from './layout/Footer/Footer'
 
 // Views
+import Home from './view/Home/Home'
 
 function App() {
   return (
     <>
       <Header />
       <Main>
-        <Routes></Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+          ></Route>
+        </Routes>
       </Main>
       <Footer />
     </>
