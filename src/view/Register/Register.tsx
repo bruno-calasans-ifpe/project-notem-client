@@ -70,7 +70,7 @@ export default function Register() {
         minWidth: '400px',
         maxWidth: '550px',
         margin: 'auto',
-        justifySelf: 'center',
+        alignSelf: 'flex-start',
       }}
     >
       <LoadingOverlay
@@ -80,6 +80,7 @@ export default function Register() {
         loaderProps={{ color: 'blue', type: 'bars' }}
       />
       <Card
+        id="register-form"
         withBorder
         shadow="sm"
         padding="lg"
