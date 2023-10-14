@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 // React
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 
 // mantine
 import { MantineProvider } from '@mantine/core'
@@ -21,7 +22,9 @@ root.render(
   <>
     <MantineProvider>
       <GlobalStyle />
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </MantineProvider>
   </>,
 )
