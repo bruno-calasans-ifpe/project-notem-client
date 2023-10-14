@@ -1,8 +1,10 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable react/no-unescaped-entities */
 // Components
 import { Title, Text, Paper, Group, List, ThemeIcon, Button } from '@mantine/core'
 import { IconCheck, IconArrowBadgeRightFilled } from '@tabler/icons-react'
 import { Carousel } from '@mantine/carousel'
+import { Routes, Route } from 'react-router'
 import Section from './components/Section/Section'
 
 // Layout
@@ -40,6 +42,7 @@ function App() {
     <>
       <Header />
       <Main>
+        <Routes></Routes>
         <Section
           id="beach-range"
           title="Praias que usam nosso app"
