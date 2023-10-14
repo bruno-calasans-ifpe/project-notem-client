@@ -15,7 +15,12 @@ function App() {
     <>
       <Header />
       <Main>
-        <Routes></Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+          ></Route>
+        </Routes>
       </Main>
       <Footer />
     </>
