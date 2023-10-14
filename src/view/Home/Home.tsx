@@ -1,5 +1,5 @@
 // Components
-import { Title, Text, Paper, Group, List, ThemeIcon, Button } from '@mantine/core'
+import { Title, Text, Paper, Group, List, ThemeIcon, Button, Flex } from '@mantine/core'
 import { IconCheck, IconArrowBadgeRightFilled } from '@tabler/icons-react'
 import { Carousel } from '@mantine/carousel'
 import Section from '../../components/Section/Section'
@@ -31,7 +31,10 @@ const BeachesFakeData = [
 
 function Home() {
   return (
-    <>
+    <Flex
+      direction="column"
+      gap={100}
+    >
       <Section
         id="beach-range"
         title="Praias que usam nosso app"
@@ -265,7 +268,7 @@ function Home() {
           </Paper>
         </Group>
       </Section>
-    </>
+    </Flex>
   )
 }
 
