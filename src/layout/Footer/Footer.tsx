@@ -106,7 +106,7 @@ function Footer() {
 
       <BottomFooter>
         <Image
-          src="./imgs/notem-logotype.png"
+          src="/imgs/notem-logotype.png"
           h={50}
         />
         <Text

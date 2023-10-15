@@ -13,7 +13,7 @@ function Header() {
         <LogoArea id="logo">
           <Anchor href="/">
             <Image
-              src="./imgs/notem-logotype.png"
+              src="/imgs/notem-logotype.png"
               alt="notem logo"
               w={150}
             />
