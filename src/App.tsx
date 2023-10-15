@@ -13,6 +13,7 @@ import Footer from './layout/Footer/Footer'
 import About from './view/About/About'
 import AboutUs from './view/About/AboutUs/AboutUs'
 import Team from './view/About/Team/Team'
+import RulesRecommendations from './view/About/RulesRecommendations/RulesRecommendations'
 
 function App() {
   return (
@@ -32,6 +33,11 @@ function App() {
             <Route
               path="team"
               element={<Team />}
+            />
+
+            <Route
+              path="rules-recommendations"
+              element={<RulesRecommendations />}
             />
           </Route>
         </Routes>

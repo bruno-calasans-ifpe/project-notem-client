@@ -12,14 +12,14 @@ function About() {
 
   useEffect(() => {
     // getting hash from url without hashtag
-    const hash = location.hash.replace('#', '') as PossibleTabs
+    const pathname = location.pathname.replace('/about/', '') as PossibleTabs
 
-    // checking is a valid hash
-    if (tabs.includes(hash)) {
+    // checking is a valid pathname
+    if (tabs.includes(pathname)) {
       // changing active tab
-      setActiveTab(hash)
+      setActiveTab(pathname)
     }
-  }, [location.hash])
+  }, [location.pathname])
 
   const changeTabHandler = (value: PossibleTabs) => {
     setActiveTab(value)
