@@ -8,6 +8,7 @@ export const Container = styled.header`
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
+  height: 600px;
 
   /* parallax */
   background-image: url('/imgs/beach2.svg');
