@@ -147,6 +147,7 @@ export default function Register() {
               size="md"
               radius="md"
               {...form.getInputProps('accountType')}
+              allowDeselect={false}
             />
 
             <Checkbox
