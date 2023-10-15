@@ -112,16 +112,10 @@ function Footer() {
         <Text
           fs="italic"
           fw="bold"
-          c="var(--letterColor2o1)"
         >
           Copyright © NOTem. All rights reserved.
         </Text>
-        <Text
-          fw="bold"
-          c="var(--letterColor2o1)"
-        >
-          2023
-        </Text>
+        <Text fw="bold">2023</Text>
       </BottomFooter>
     </Container>
   )
