@@ -45,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
 
     #root {
         display: grid;
-        grid-template-rows: var(--headerHeight) 1fr var(--footerHeight);
+        grid-template-rows: auto 1fr var(--footerHeight);
     }
 `
 
