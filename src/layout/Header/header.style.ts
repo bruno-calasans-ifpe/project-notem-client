@@ -10,7 +10,7 @@ export const Container = styled.header`
   padding: 20px;
 
   /* parallax */
-  background-image: url('./imgs/beach2.svg');
+  background-image: url('/imgs/beach2.svg');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
