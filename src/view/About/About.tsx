@@ -21,12 +21,16 @@ function About() {
     }
   }, [location.hash])
 
+  const changeTabHandler = (value: PossibleTabs) => {
+    setActiveTab(value)
+    navigate(`${value}`)
+  }
+
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <Flex>
       <Tabs
         value={activeTab}
-        onChange={(value) => navigate(`${value}`)}
+        onChange={changeTabHandler}
       >
         <Tabs.List grow>
           <Tabs.Tab value={tabs[0]}>Sobre nós</Tabs.Tab>

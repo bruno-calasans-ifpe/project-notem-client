@@ -12,6 +12,7 @@ import Footer from './layout/Footer/Footer'
 // Views
 import About from './view/About/About'
 import AboutUs from './view/About/AboutUs/AboutUs'
+import Team from './view/About/Team/Team'
 
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
             <Route
               path="about-us"
               element={<AboutUs />}
+            />
+
+            <Route
+              path="team"
+              element={<Team />}
             />
           </Route>
         </Routes>
