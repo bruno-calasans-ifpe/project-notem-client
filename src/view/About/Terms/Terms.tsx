@@ -8,8 +8,16 @@ function Terms() {
       //   subtitle="O que você pode ou não fazer"
       titleColor="black"
     >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem, molestiae velit sint facilis enim cum magni
-      veritatis id labore, ad dolor aut eveniet, nemo mollitia animi voluptatum dolore unde?
+      <Text
+        size="sm"
+        c="dimmed"
+      >
+        Última atualização: 05/10/2023
+      </Text>
+      <Text mt="md">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore rem, molestiae velit sint facilis enim cum
+        magni veritatis id labore, ad dolor aut eveniet, nemo mollitia animi voluptatum dolore unde?
+      </Text>
       <ScrollArea
         mt="lg"
         h={800}
