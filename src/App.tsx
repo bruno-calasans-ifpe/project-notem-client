@@ -15,6 +15,7 @@ import AboutUs from './view/About/AboutUs/AboutUs'
 import Team from './view/About/Team/Team'
 import RulesRecommendations from './view/About/RulesRecommendations/RulesRecommendations'
 import Terms from './view/About/Terms/Terms'
+import PrivacyPolicy from './view/About/Privacy/Privacy'
 
 function App() {
   return (
@@ -44,6 +45,11 @@ function App() {
             <Route
               path="terms"
               element={<Terms />}
+            />
+
+            <Route
+              path="privacy"
+              element={<PrivacyPolicy />}
             />
           </Route>
         </Routes>
