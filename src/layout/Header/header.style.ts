@@ -8,13 +8,26 @@ export const Container = styled.header`
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
+  height: 600px;
 
   /* parallax */
-  background-image: url('./imgs/beach2.svg');
+  background-image: url('/imgs/beach2.svg');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: left top;
+
+  &.no-welcome-msg {
+    height: fit-content;
+
+    #top-header {
+      align-items: center;
+    }
+
+    #bottom-header {
+      display: none;
+    }
+  }
 `
 
 export const TopHeader = styled.div`
