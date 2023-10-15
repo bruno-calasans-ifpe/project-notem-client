@@ -15,6 +15,18 @@ export const Container = styled.header`
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: left top;
+
+  &.no-welcome-msg {
+    height: fit-content;
+
+    #top-header {
+      align-items: center;
+    }
+
+    #bottom-header {
+      display: none;
+    }
+  }
 `
 
 export const TopHeader = styled.div`

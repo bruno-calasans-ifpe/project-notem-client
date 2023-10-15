@@ -1,19 +1,25 @@
 import { Group, Button, Image, Anchor, Text } from '@mantine/core'
 import { IconArrowRight } from '@tabler/icons-react'
+import { useLocation } from 'react-router'
 import { Container, TopHeader, LogoArea, MenuArea, BottomHeader, WelcomeMsgArea, ObsArea } from './header.style'
 
 function Header() {
+  const currentLocation = useLocation()
+  const isHomePage = currentLocation.pathname === '/'
+
   return (
-    <Container>
-      <TopHeader>
+    <Container className={isHomePage ? '' : 'no-welcome-msg'}>
+      <TopHeader id="top-header">
         <LogoArea id="logo">
-          <Image
-            src="./imgs/notem-logotype.png"
-            alt="notem logo"
-            w={150}
-          />
+          <Anchor href="/">
+            <Image
+              src="./imgs/notem-logotype.png"
+              alt="notem logo"
+              w={150}
+            />
+          </Anchor>
         </LogoArea>
-        <MenuArea id="menu">
+        <MenuArea id="nav-menu">
           <Group gap="xs">
             <Button
               variant="outline"
@@ -22,12 +28,16 @@ function Header() {
               <Text fw="bold">Login</Text>
             </Button>
             <Button
+              component="a"
+              href="/register"
               variant="outline"
               color="indigo"
             >
               <Text fw="bold">Registrar</Text>
             </Button>
             <Button
+              component="a"
+              href="/about"
               variant="outline"
               color="indigo"
             >
@@ -37,8 +47,8 @@ function Header() {
         </MenuArea>
       </TopHeader>
 
-      <BottomHeader>
-        <WelcomeMsgArea>
+      <BottomHeader id="bottom-header">
+        <WelcomeMsgArea id="welcome-msg">
           <Text
             id="msg"
             size="xl"
@@ -51,6 +61,8 @@ function Header() {
           </Text>
 
           <Button
+            component="a"
+            href="/register"
             color="teal"
             size="md"
             fullWidth={false}
