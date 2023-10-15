@@ -14,6 +14,7 @@ import About from './view/About/About'
 import AboutUs from './view/About/AboutUs/AboutUs'
 import Team from './view/About/Team/Team'
 import RulesRecommendations from './view/About/RulesRecommendations/RulesRecommendations'
+import Terms from './view/About/Terms/Terms'
 
 function App() {
   return (
@@ -38,6 +39,11 @@ function App() {
             <Route
               path="rules-recommendations"
               element={<RulesRecommendations />}
+            />
+
+            <Route
+              path="terms"
+              element={<Terms />}
             />
           </Route>
         </Routes>
