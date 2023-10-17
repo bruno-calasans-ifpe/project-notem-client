@@ -15,6 +15,10 @@ import GlobalStyle from './styles/global.style'
 // main component
 import App from './App'
 
+// import { mountStoreDevtool } from 'simple-zustand-devtools'
+// import useAuthStore from './store/useAuthStore'
+// mountStoreDevtool('authstore', useAuthStore)
+
 const container = document.getElementById('root')
 const root = createRoot(container!)
 

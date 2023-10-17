@@ -8,10 +8,12 @@ import { Routes, Route } from 'react-router'
 import Header from './layout/Header/Header'
 import Main from './layout/Main/Main'
 import Footer from './layout/Footer/Footer'
+import useAuthStore from './store/useAuthStore'
 
 // Views
 
 function App() {
+  const { user } = useAuthStore((state) => state)
   return (
     <>
       <Header />
