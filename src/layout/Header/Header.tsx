@@ -37,7 +37,7 @@ function Header() {
             </Button>
             <Button
               component="a"
-              href="/about"
+              href="/about/us"
               variant="outline"
               color="indigo"
             >
