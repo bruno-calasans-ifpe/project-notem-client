@@ -1,5 +1,5 @@
-import { Anchor, Group, List, Text, Image, Divider } from '@mantine/core'
-import { IconLink, IconBrandFacebook, IconBrandInstagram, IconBrandTwitter } from '@tabler/icons-react'
+import { Anchor, Group, List, Text, Image, Flex } from '@mantine/core'
+import { IconBrandFacebook, IconBrandInstagram, IconBrandTwitter } from '@tabler/icons-react'
 import { Container, LinksArea, FollowArea, Lists, UpperFooter, BottomFooter } from './footer.style'
 
 function Footer() {
@@ -7,73 +7,122 @@ function Footer() {
     <Container>
       <UpperFooter>
         <LinksArea>
-          <Text
-            fw="bold"
-            size="lg"
-          >
-            Links
-          </Text>
           <Lists>
-            <List
-              id="left-links"
-              icon={<IconLink size={15} />}
+            {/* Right Links */}
+            <Flex
+              direction="column"
+              justify="center"
+              align="center"
             >
-              <List.Item>
-                <Anchor
-                  href="/about/us"
-                  c="dark"
-                >
-                  Quem somos
-                </Anchor>
-              </List.Item>
-              <List.Item>
-                <Anchor
-                  href="/about/team"
-                  c="dark"
-                >
-                  Nossa equipe
-                </Anchor>
-              </List.Item>
-              <List.Item>
-                <Anchor
-                  href="/about/contacts"
-                  c="dark"
-                >
-                  Contate-nos
-                </Anchor>
-              </List.Item>
-            </List>
-            <List
-              id="right-links"
-              icon={<IconLink size={15} />}
+              <Text
+                fw="bold"
+                size="lg"
+                ta="center"
+              >
+                Sobre a gente
+              </Text>
+              <List
+                id="left-links"
+                listStyleType="none"
+                ta="center"
+              >
+                <List.Item>
+                  <Anchor
+                    href="/about/us"
+                    c="dark"
+                  >
+                    Quem somos
+                  </Anchor>
+                </List.Item>
+                <List.Item>
+                  <Anchor
+                    href="/about/team"
+                    c="dark"
+                  >
+                    Nossa equipe
+                  </Anchor>
+                </List.Item>
+              </List>
+            </Flex>
+
+            {/* Middle Links */}
+            <Flex
+              direction="column"
+              justify="center"
+              align="center"
             >
-              <List.Item>
-                <Anchor
-                  href="/about/rules-recommendations"
-                  c="dark"
-                >
-                  Regras e Recomendações
-                </Anchor>
-              </List.Item>
-              <List.Item>
-                <Anchor
-                  href="/about/terms-of-use"
-                  c="dark"
-                >
-                  Termos de Uso
-                </Anchor>
-              </List.Item>
-              <List.Item>
-                <Anchor
-                  href="/about/privacy-policy"
-                  c="dark"
-                >
-                  Política de Privacidade
-                </Anchor>
-              </List.Item>
-            </List>
+              <Text
+                fw="bold"
+                size="lg"
+                ta="center"
+              >
+                Outras Informações
+              </Text>
+              <List
+                id="right-links"
+                listStyleType="none"
+                ta="center"
+              >
+                <List.Item>
+                  <Anchor
+                    href="/about/QA"
+                    c="dark"
+                  >
+                    Perguntas Frequentes
+                  </Anchor>
+                </List.Item>
+
+                <List.Item>
+                  <Anchor
+                    href="/about/contacts"
+                    c="dark"
+                  >
+                    Contate-nos
+                  </Anchor>
+                </List.Item>
+              </List>
+            </Flex>
+
+            {/* Left Links */}
+            <Flex
+              direction="column"
+              justify="center"
+              align="center"
+            >
+              <Text
+                fw="bold"
+                size="lg"
+                ta="center"
+              >
+                Legal
+              </Text>
+              <List
+                id="right-links"
+                listStyleType="none"
+                ta="center"
+              >
+                <List.Item>
+                  <Anchor
+                    href="/about/terms"
+                    c="dark"
+                  >
+                    Termos de Uso
+                  </Anchor>
+                </List.Item>
+                <List.Item>
+                  <Anchor
+                    href="/about/privacy"
+                    c="dark"
+                  >
+                    Política de Privacidade
+                  </Anchor>
+                </List.Item>
+              </List>
+            </Flex>
           </Lists>
         </LinksArea>
+
+        {/* Siga-nos */}
         <FollowArea>
           <Text
             fw="bold"

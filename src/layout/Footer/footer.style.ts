@@ -28,14 +28,14 @@ export const LinksArea = styled.div`
 
 export const Lists = styled.div`
   display: flex;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 30px;
 `
 
 export const FollowArea = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
 `
 
 export const BottomFooter = styled.div`
