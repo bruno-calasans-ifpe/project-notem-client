@@ -14,6 +14,7 @@ import About from './view/About/About'
 import Us from './view/About/Us/Us'
 import Team from './view/About/Team/Team'
 import QA from './view/About/QA/QA'
+import Contacts from './view/About/Contacts/Contacts'
 import Terms from './view/About/Terms/Terms'
 import Privacy from './view/About/Privacy/Privacy'
 
@@ -40,6 +41,11 @@ function App() {
             <Route
               path="QA"
               element={<QA />}
+            />
+
+            <Route
+              path="contacts"
+              element={<Contacts />}
             />
 
             <Route
