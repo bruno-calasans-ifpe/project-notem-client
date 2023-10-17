@@ -20,7 +20,7 @@ function Footer() {
             >
               <List.Item>
                 <Anchor
-                  href="./about-us#we-are"
+                  href="/about/us"
                   c="dark"
                 >
                   Quem somos
@@ -28,15 +28,15 @@ function Footer() {
               </List.Item>
               <List.Item>
                 <Anchor
-                  href="./about-us#our-team"
+                  href="/about/team"
                   c="dark"
                 >
-                  Conheça nossa equipe
+                  Nossa equipe
                 </Anchor>
               </List.Item>
               <List.Item>
                 <Anchor
-                  href="./about-us#contact-us"
+                  href="/about/contacts"
                   c="dark"
                 >
                   Contate-nos
@@ -49,7 +49,7 @@ function Footer() {
             >
               <List.Item>
                 <Anchor
-                  href="./about-us#rules-and-recomendations"
+                  href="/about/rules-recommendations"
                   c="dark"
                 >
                   Regras e Recomendações
@@ -57,7 +57,7 @@ function Footer() {
               </List.Item>
               <List.Item>
                 <Anchor
-                  href="./about-us#terms-of-use"
+                  href="/about/terms-of-use"
                   c="dark"
                 >
                   Termos de Uso
@@ -65,7 +65,7 @@ function Footer() {
               </List.Item>
               <List.Item>
                 <Anchor
-                  href="/about-us#privacy-policy"
+                  href="/about/privacy-policy"
                   c="dark"
                 >
                   Política de Privacidade
