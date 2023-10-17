@@ -11,11 +11,11 @@ import Footer from './layout/Footer/Footer'
 
 // Views
 import About from './view/About/About'
-import AboutUs from './view/About/AboutUs/AboutUs'
+import Us from './view/About/Us/Us'
 import Team from './view/About/Team/Team'
-import RulesRecommendations from './view/About/RulesRecommendations/RulesRecommendations'
+import QA from './view/About/QA/QA'
 import Terms from './view/About/Terms/Terms'
-import PrivacyPolicy from './view/About/Privacy/Privacy'
+import Privacy from './view/About/Privacy/Privacy'
 
 function App() {
   return (
@@ -28,8 +28,8 @@ function App() {
             element={<About />}
           >
             <Route
-              path="about-us"
-              element={<AboutUs />}
+              path="us"
+              element={<Us />}
             />
 
             <Route
@@ -38,8 +38,8 @@ function App() {
             />
 
             <Route
-              path="rules-recommendations"
-              element={<RulesRecommendations />}
+              path="QA"
+              element={<QA />}
             />
 
             <Route
@@ -49,7 +49,7 @@ function App() {
 
             <Route
               path="privacy"
-              element={<PrivacyPolicy />}
+              element={<Privacy />}
             />
           </Route>
         </Routes>

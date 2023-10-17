@@ -14,10 +14,8 @@ function privacy() {
         Última atualização: 05/10/2023
       </Text>
       <Text mt="md">
-        <Text>
-          With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around
-          the fjords of Norway
-        </Text>
+        With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around
+        the fjords of Norway
       </Text>
 
       <Group mt="xl">

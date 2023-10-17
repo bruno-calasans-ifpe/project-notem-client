@@ -5,7 +5,6 @@ function Terms() {
   return (
     <Section
       title="Termos de Uso"
-      //   subtitle="O que você pode ou não fazer"
       titleColor="black"
     >
       <Text
