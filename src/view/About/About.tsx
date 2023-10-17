@@ -23,7 +23,7 @@ function About() {
 
   const changeTabHandler = (value: PossibleTabs) => {
     setActiveTab(value)
-    navigate(`${value}`)
+    navigate(value)
   }
 
   return (
