@@ -12,6 +12,7 @@ import Footer from './layout/Footer/Footer'
 import useAuthStore from './store/useAuthStore'
 
 // Views
+import AuthHome from './view/Auth/Home/AuthHome'
 
 function App() {
   const { user, login } = useAuthStore((state) => state)
@@ -30,7 +31,14 @@ function App() {
     <>
       <Header />
       <Main>
-        <Routes>{/* <Route></Route> */}</Routes>
+        <Routes>
+          {user && (
+            <Route
+              path="/"
+              element={<AuthHome />}
+            />
+          )}
+        </Routes>
       </Main>
       <Footer />
     </>
