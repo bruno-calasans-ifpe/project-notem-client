@@ -76,7 +76,6 @@ function UserRating({ initalRating }: UserRatingProps) {
               <Text>({rating.stars})</Text>
               <Rating
                 value={rating.stars}
-                fractions={2}
                 readOnly
               />
             </Flex>
@@ -126,7 +125,6 @@ function UserRating({ initalRating }: UserRatingProps) {
             <Rating
               value={rating.stars}
               onChange={changeStars}
-              fractions={2}
             />
           </Flex>
           <Textarea

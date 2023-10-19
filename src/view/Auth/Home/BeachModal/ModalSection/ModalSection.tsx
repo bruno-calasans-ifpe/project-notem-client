@@ -11,7 +11,7 @@ function ModalSection({ title, children, ...flexProps }: ModalSectionProps) {
     <Flex
       id="modal-section"
       direction="column"
-      gap={4}
+      gap={5}
       {...flexProps}
     >
       <Flex

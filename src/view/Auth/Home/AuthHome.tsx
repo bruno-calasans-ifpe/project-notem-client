@@ -11,7 +11,6 @@ function AuthHome() {
   return (
     <Section
       title="Praias"
-      // subtitle="Selecione uma Praia"
       titleColor="black"
     >
       <SearchBar />
@@ -35,6 +34,26 @@ function AuthHome() {
                 user: 'Fábio',
                 commentary: 'Vai se fuder. Que praia lixo do krai, nunca mais volto aqui, plmd',
                 stars: 2,
+                date: '11/09/2005',
+              },
+              {
+                user: 'Ana',
+                commentary: 'Praia muito boa, slk',
+                stars: 4,
+                date: '12/05/2009',
+              },
+
+              {
+                user: 'Coringa',
+                commentary: 'Bem, praia muito boa para certas coisa >:)',
+                stars: 5,
+                date: '12/05/2009',
+              },
+              {
+                user: 'Claudio',
+                commentary: 'Bem, praia muito boa para certas coisa >:)',
+                stars: 5,
+                date: '12/05/2009',
               },
             ],
           }}
@@ -42,6 +61,7 @@ function AuthHome() {
             user: user ? user.name : 'visitante',
             commentary: 'Praia boazinha pra desovar um corpo :)',
             stars: 4,
+            date: '10/10/1999',
           }}
         />
 

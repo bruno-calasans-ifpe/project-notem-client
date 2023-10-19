@@ -6,7 +6,6 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-no-useless-fragment */
 import { Text, Button, Modal, Flex, Title } from '@mantine/core'
-import { useEffect, useState } from 'react'
 import type { BeachCardProps } from '../BeachCard/BeachCard'
 
 import ModalSection from './ModalSection/ModalSection'

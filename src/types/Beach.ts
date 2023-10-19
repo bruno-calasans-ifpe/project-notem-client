@@ -4,6 +4,7 @@ export type BeachRating = {
   user: string
   stars: number
   commentary: string
+  date: string
 }
 
 export type Beach = {

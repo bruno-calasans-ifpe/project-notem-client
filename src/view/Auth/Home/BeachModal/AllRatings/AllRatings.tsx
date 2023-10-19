@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/order */
 /* eslint-disable no-restricted-syntax */
-import { Flex, Text, Rating, Group, Anchor } from '@mantine/core'
+import { Flex, Text, Rating, Group, Anchor, Modal, Title, ScrollArea } from '@mantine/core'
 import { BeachRating } from '../../../../../types/Beach'
-import { useSetState } from '@mantine/hooks'
+import { useSetState, useDisclosure } from '@mantine/hooks'
 import { useEffect } from 'react'
+import Commentary from '../Commentary/Commentary'
 
 type AllRatingsProps = {
   ratings: BeachRating[]
@@ -17,6 +18,7 @@ type RatingsData = {
 }
 
 function AllRatings({ ratings }: AllRatingsProps) {
+  const [opened, { open, close }] = useDisclosure(true)
   const [ratingData, setRatingData] = useSetState<RatingsData>({
     media: 0,
     sumStars: 0,
@@ -32,7 +34,7 @@ function AllRatings({ ratings }: AllRatingsProps) {
       for (const rating of ratings) {
         sumStars += rating.stars
       }
-      media = sumStars / quant
+      media = Math.round(sumStars / quant)
     }
     setRatingData({ media, sumStars, quant })
   }
@@ -48,6 +50,81 @@ function AllRatings({ ratings }: AllRatingsProps) {
       justify="center"
       direction="column"
     >
+      <Modal
+        opened={opened}
+        onClose={close}
+        centered
+        withCloseButton={false}
+      >
+        <Flex
+          direction="column"
+          gap={20}
+        >
+          <Flex
+            id="commentaries-header"
+            direction="column"
+            align="center"
+            gap={5}
+          >
+            <Flex
+              id="superior-header"
+              direction="column"
+              align="center"
+            >
+              <Title order={2}> Avaliações da Praia</Title>
+              <Text
+                size="lg"
+                c="dimmed"
+              >
+                Praia da Capivara
+              </Text>
+            </Flex>
+            <Flex
+              id="inferior-header"
+              direction="column"
+              align="center"
+              gap={2}
+            >
+              <Text
+                fw="bold"
+                size="xl"
+              >
+                {ratingData.media}.0
+              </Text>
+              <Rating
+                value={ratingData.media}
+                readOnly
+              />
+              <Text
+                size="sm"
+                c="dimmed"
+              >
+                {ratingData.quant} avaliações no total
+              </Text>
+            </Flex>
+          </Flex>
+
+          <ScrollArea
+            type="scroll"
+            offsetScrollbars
+            scrollbarSize={5}
+            h={400}
+          >
+            <Flex
+              id="commentaries-content"
+              direction="column"
+              gap={20}
+            >
+              {ratings.map((rating) => (
+                <Commentary
+                  rating={rating}
+                  key={rating.user}
+                />
+              ))}
+            </Flex>
+          </ScrollArea>
+        </Flex>
+      </Modal>
       <Group>
         <Flex
           align="center"
@@ -56,7 +133,6 @@ function AllRatings({ ratings }: AllRatingsProps) {
           <Text>({ratingData.media})</Text>
           <Rating
             value={ratingData.media}
-            fractions={2}
             readOnly
           />
         </Flex>
@@ -64,7 +140,7 @@ function AllRatings({ ratings }: AllRatingsProps) {
           size="xs"
           c="dimmed"
         >
-          <Anchor>{ratingData.quant} avaliações no total</Anchor>
+          <Anchor onClick={open}>{ratingData.quant} avaliações no total</Anchor>
         </Text>
       </Group>
     </Flex>
