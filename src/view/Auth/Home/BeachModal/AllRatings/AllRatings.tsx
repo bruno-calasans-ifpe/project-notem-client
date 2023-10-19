@@ -18,7 +18,7 @@ type RatingsData = {
 }
 
 function AllRatings({ ratings }: AllRatingsProps) {
-  const [opened, { open, close }] = useDisclosure(true)
+  const [opened, { open, close }] = useDisclosure(false)
   const [ratingData, setRatingData] = useSetState<RatingsData>({
     media: 0,
     sumStars: 0,

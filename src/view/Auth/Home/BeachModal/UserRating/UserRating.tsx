@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/require-default-props */
 /* eslint-disable import/order */
-import { Text, Group, Button, ActionIcon, Flex, Rating, Textarea } from '@mantine/core'
+import { Text, Group, Button, ActionIcon, Flex, Rating, Textarea, Menu } from '@mantine/core'
 import type { BeachRating } from '../../../../../types/Beach'
 import { useSetState } from '@mantine/hooks'
-import { IconEditCircle, IconTrash } from '@tabler/icons-react'
+import { IconEditCircle, IconTrash, IconDotsVertical } from '@tabler/icons-react'
 
 type UserRatingProps = {
   initalRating?: BeachRating
@@ -84,34 +84,55 @@ function UserRating({ initalRating }: UserRatingProps) {
               align="flex-end"
               gap={5}
             >
-              <ActionIcon
-                id="edit-commentary"
-                variant="subtle"
-                c="orange"
-                onClick={startEditing}
+              <Menu
+                id="commentary-options"
+                position="left-start"
+                offset={2}
               >
-                <IconEditCircle
-                  style={{ width: 15, height: 15 }}
-                  stroke={1.5}
-                />
-              </ActionIcon>
-              <ActionIcon
-                id="remove-commentary"
-                variant="subtle"
-                c="red"
-                onClick={removeCommentary}
-              >
-                <IconTrash
-                  style={{ width: 15, height: 15 }}
-                  stroke={1.5}
-                />
-              </ActionIcon>
+                <Menu.Target>
+                  <ActionIcon
+                    variant="subtle"
+                    c="indigo"
+                  >
+                    <IconDotsVertical
+                      style={{ width: 15, height: 15 }}
+                      stroke={2}
+                    />
+                  </ActionIcon>
+                </Menu.Target>
+                <Menu.Dropdown>
+                  <Menu.Item
+                    id="edit-option"
+                    onClick={startEditing}
+                    leftSection={
+                      <IconEditCircle
+                        style={{ width: 15, height: 15 }}
+                        stroke={1.5}
+                      />
+                    }
+                  >
+                    Editar
+                  </Menu.Item>
+                  <Menu.Item
+                    id="remove-option"
+                    onClick={removeCommentary}
+                    leftSection={
+                      <IconTrash
+                        style={{ width: 15, height: 15 }}
+                        stroke={1.5}
+                      />
+                    }
+                  >
+                    Excluir
+                  </Menu.Item>
+                </Menu.Dropdown>
+              </Menu>
             </Flex>
           </Group>
         </>
       )}
 
-      {rating.commentary && rating.editing && (
+      {rating.editing && (
         <Flex
           id="edit-commentary-area"
           direction="column"
@@ -162,6 +183,7 @@ function UserRating({ initalRating }: UserRatingProps) {
               variant="subtle"
               color="blue"
               size="compact-xs"
+              onClick={startEditing}
             >
               Avaliar
             </Button>
