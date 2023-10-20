@@ -6,23 +6,23 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-no-useless-fragment */
 import { Text, Button, Modal, Flex, Title } from '@mantine/core'
-import type { BeachCardProps } from '../BeachCard/BeachCard'
-
 import ModalSection from './ModalSection/ModalSection'
-import AllRatings from './AllRatings/AllRatings'
+import Ratings from './Ratings/Ratings'
 import UserRating from './UserRating/UserRating'
 import CustomCarousel from '../../../../components/CustomCarousel/CustomCarousel'
+import type { Beach } from '../../../../types/Beach'
 
-type BeachModalProps = BeachCardProps & {
+type BeachModalProps = {
+  beach: Beach
   opened: boolean
   close: () => void
 }
 
-function BeachModal({ opened, close, beach, yourRating }: BeachModalProps) {
+function BeachModal({ opened, close, beach }: BeachModalProps) {
   return (
     <>
       <Modal
-        id="more-info"
+        id="beach-info-modal"
         h="auto"
         opened={opened}
         onClose={close}
@@ -49,7 +49,7 @@ function BeachModal({ opened, close, beach, yourRating }: BeachModalProps) {
               {beach.name}
             </Title>
 
-            <AllRatings ratings={beach.ratings} />
+            <Ratings ratings={beach.ratings} />
           </Flex>
 
           <Flex
@@ -72,7 +72,7 @@ function BeachModal({ opened, close, beach, yourRating }: BeachModalProps) {
             </ModalSection>
 
             <ModalSection title="Sua avaliação">
-              <UserRating initalRating={yourRating} />
+              <UserRating initalRating={beach.userRating} />
             </ModalSection>
 
             <Button

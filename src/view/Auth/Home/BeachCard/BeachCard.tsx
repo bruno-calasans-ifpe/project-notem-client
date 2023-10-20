@@ -3,19 +3,18 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable arrow-body-style */
-import { Text, Card, Image, Group, Button, ActionIcon } from '@mantine/core'
+import { Text, Card, Image, Group, Button, ActionIcon, Flex } from '@mantine/core'
 import { IconInfoCircle } from '@tabler/icons-react'
 import { useDisclosure } from '@mantine/hooks'
-import { useState } from 'react'
 import BeachModal from '../BeachModal/BeachModal'
-import { Beach, BeachRating } from '../../../../types/Beach'
+import type { Beach } from '../../../../types/Beach'
+import useBeachStore from '../../../../store/useBeachStore'
 
-export type BeachCardProps = {
+type BeachCardProps = {
   beach: Beach
-  yourRating?: BeachRating
 }
 
-function BeachCard({ beach, yourRating }: BeachCardProps) {
+function BeachCard({ beach }: BeachCardProps) {
   const [opened, { open, close }] = useDisclosure(false)
 
   return (
@@ -24,7 +23,6 @@ function BeachCard({ beach, yourRating }: BeachCardProps) {
         opened={opened}
         close={close}
         beach={beach}
-        yourRating={yourRating}
       />
       <Card
         shadow="sm"
@@ -75,7 +73,7 @@ function BeachCard({ beach, yourRating }: BeachCardProps) {
         >
           Selecionar Praia
         </Button>
-        <div
+        <Flex
           id="info-button"
           style={{
             position: 'absolute',
@@ -94,7 +92,7 @@ function BeachCard({ beach, yourRating }: BeachCardProps) {
               stroke={1.5}
             />
           </ActionIcon>
-        </div>
+        </Flex>
       </Card>
     </>
   )

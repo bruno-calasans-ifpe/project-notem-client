@@ -14,4 +14,5 @@ export type Beach = {
   danger: DangerTypes
   images: string[]
   ratings: BeachRating[]
+  userRating?: BeachRating
 }
