@@ -3,12 +3,12 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable arrow-body-style */
-import { Text, Card, Image, Group, Button, ActionIcon, Flex } from '@mantine/core'
+import { Text, Card, Image, Group, Button, ActionIcon } from '@mantine/core'
 import { IconInfoCircle } from '@tabler/icons-react'
 import { useDisclosure } from '@mantine/hooks'
 import BeachModal from '../BeachModal/BeachModal'
 import type { Beach } from '../../../../types/Beach'
-import useBeachStore from '../../../../store/useBeachStore'
+import ActionIconOverlay from '../../../../components/Overlay/Overlay'
 
 type BeachCardProps = {
   beach: Beach
@@ -73,15 +73,7 @@ function BeachCard({ beach }: BeachCardProps) {
         >
           Selecionar Praia
         </Button>
-        <Flex
-          id="info-button"
-          style={{
-            position: 'absolute',
-            top: 5,
-            right: 5,
-            zIndex: 100,
-          }}
-        >
+        <ActionIconOverlay>
           <ActionIcon
             variant="subtle"
             c="snow"
@@ -92,7 +84,7 @@ function BeachCard({ beach }: BeachCardProps) {
               stroke={1.5}
             />
           </ActionIcon>
-        </Flex>
+        </ActionIconOverlay>
       </Card>
     </>
   )
