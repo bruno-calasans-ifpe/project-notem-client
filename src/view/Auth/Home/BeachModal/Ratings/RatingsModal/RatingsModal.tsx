@@ -1,7 +1,7 @@
 import { Flex, Modal, Rating, ScrollArea, Text, Title } from '@mantine/core'
 import type { RatingsData } from '../ratings.type'
 import Commentary from '../Commentary/Commentary'
-import { BeachRating } from '../../../../../../types/Beach'
+import { BeachRating } from '../../../../../../types/Beach.type'
 
 type RatingModalProps = {
   opened: boolean

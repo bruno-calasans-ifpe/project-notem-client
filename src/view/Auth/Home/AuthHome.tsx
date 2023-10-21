@@ -1,13 +1,13 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-else-return */
-import { Pagination, SimpleGrid, Grid, Flex, Title, Text } from '@mantine/core'
+import { Pagination, Grid, Flex, Text } from '@mantine/core'
 import { useSetState } from '@mantine/hooks'
 import Section from '../../../components/Section/Section'
 import useAuthStore from '../../../store/useAuthStore'
 import SearchBar from './SearchBar/SearchBar'
 import BeachCard from './BeachCard/BeachCard'
-import type { Beach } from '../../../types/Beach'
+import type { Beach } from '../../../types/Beach.type'
 
 type BeachesPagination = {
   itemsPerPage: number
@@ -275,7 +275,8 @@ function AuthHome() {
 
   return (
     <Section
-      title="Praias"
+      title="Praias Disponíveis"
+      subtitle="Selecione uma praia"
       titleColor="black"
     >
       <SearchBar />
@@ -291,9 +292,11 @@ function AuthHome() {
         <Grid.Col span={3}>
           <Flex justify="space-between">
             <Text c="dimmed">
-              Página {pagination.currentPage} de {totalPages}
+              Página {currentPage} de {totalPages}
             </Text>
-            <Text c="dimmed">Mostrando {beachesOnPage.length} item(s)</Text>
+            <Text c="dimmed">
+              Mostrando {beachesOnPage.length} de {beaches.length} item(s)
+            </Text>
           </Flex>
         </Grid.Col>
         {beachesOnPage.map((beach, index) => (

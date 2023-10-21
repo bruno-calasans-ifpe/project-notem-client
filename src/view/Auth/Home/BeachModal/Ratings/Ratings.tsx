@@ -2,7 +2,7 @@
 /* eslint-disable import/order */
 /* eslint-disable no-restricted-syntax */
 import { Flex, Text, Rating, Group, Anchor, Modal, Title, ScrollArea } from '@mantine/core'
-import { BeachRating } from '../../../../../types/Beach'
+import { BeachRating } from '../../../../../types/Beach.type'
 import { useSetState, useDisclosure } from '@mantine/hooks'
 import { useEffect } from 'react'
 import RatingModal from './RatingsModal/RatingsModal'

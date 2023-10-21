@@ -1,5 +1,5 @@
 import { Flex, Group, Title, Text, Rating, Divider } from '@mantine/core'
-import type { BeachRating } from '../../../../../../types/Beach'
+import type { BeachRating } from '../../../../../../types/Beach.type'
 
 type CommentaryProps = {
   rating: BeachRating

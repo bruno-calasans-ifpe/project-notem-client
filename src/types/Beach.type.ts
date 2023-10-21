@@ -7,6 +7,16 @@ export type BeachRating = {
   date: string
 }
 
+export type BeachProduct = {
+  name: 'string'
+  image: string
+}
+
+export type BeachService = {
+  name: 'string'
+  image: string
+}
+
 export type Beach = {
   name: string
   location: string
@@ -15,4 +25,6 @@ export type Beach = {
   images: string[]
   ratings: BeachRating[]
   userRating?: BeachRating
+  products?: BeachProduct[]
+  services?: BeachService[]
 }

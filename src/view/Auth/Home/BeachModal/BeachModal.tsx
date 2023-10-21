@@ -10,7 +10,7 @@ import ModalSection from './ModalSection/ModalSection'
 import Ratings from './Ratings/Ratings'
 import UserRating from './UserRating/UserRating'
 import CustomCarousel from '../../../../components/CustomCarousel/CustomCarousel'
-import type { Beach } from '../../../../types/Beach'
+import type { Beach } from '../../../../types/Beach.type'
 
 type BeachModalProps = {
   beach: Beach

@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
 import ENVCONFIG from '../config/env'
-import type { Beach } from '../types/Beach'
+import type { Beach } from '../types/Beach.type'
 
 type AuthStore = {
   beach: Beach | null
