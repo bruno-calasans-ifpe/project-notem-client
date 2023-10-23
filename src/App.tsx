@@ -11,6 +11,7 @@ import Footer from './layout/Footer/Footer'
 import useAuthStore from './store/useAuthStore'
 
 // Views
+import Home from './view/Home/Home'
 
 function App() {
   const { user } = useAuthStore((state) => state)
@@ -18,7 +19,12 @@ function App() {
     <>
       <Header />
       <Main>
-        <Routes></Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+          ></Route>
+        </Routes>
       </Main>
       <Footer />
     </>
