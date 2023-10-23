@@ -2,6 +2,7 @@ import { TextInput, Button, Group, Box, Flex, PasswordInput, Anchor, LoadingOver
 import { useForm } from '@mantine/form'
 import { IconAt, IconLock, IconLogin, IconBrandGoogle } from '@tabler/icons-react'
 import { useDisclosure } from '@mantine/hooks'
+import useAuthStore from '../../store/useAuthStore'
 
 type LoginFormInputs = {
   email: string
@@ -10,6 +11,7 @@ type LoginFormInputs = {
 
 function LoginForm() {
   const [loading, { open: start, close: stop }] = useDisclosure(false)
+  const { login } = useAuthStore()
 
   const form = useForm<LoginFormInputs>({
     initialValues: {
@@ -32,6 +34,11 @@ function LoginForm() {
 
     // start loading
     start()
+    login({
+      email: form.values.email,
+      name: 'Test User',
+      accountType: 'cliente',
+    })
 
     // todo login api
     console.log(form.values)
