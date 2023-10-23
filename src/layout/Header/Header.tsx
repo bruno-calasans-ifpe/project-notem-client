@@ -1,14 +1,21 @@
 import { Group, Button, Image, Anchor, Text } from '@mantine/core'
 import { IconArrowRight } from '@tabler/icons-react'
+import { useDisclosure } from '@mantine/hooks'
 import { useLocation } from 'react-router'
 import { Container, TopHeader, LogoArea, MenuArea, BottomHeader, WelcomeMsgArea, ObsArea } from './header.style'
+import LoginModal from '../../view/Login/Login'
 
 function Header() {
+  const [isOpen, { open, close }] = useDisclosure(false)
   const currentLocation = useLocation()
   const isHomePage = currentLocation.pathname === '/'
 
   return (
     <Container className={isHomePage ? '' : 'no-welcome-msg'}>
+      <LoginModal
+        isOpen={isOpen}
+        close={close}
+      />
       <TopHeader id="top-header">
         <LogoArea id="logo">
           <Anchor href="/">
@@ -24,6 +31,7 @@ function Header() {
             <Button
               variant="outline"
               color="indigo"
+              onClick={open}
             >
               <Text fw="bold">Login</Text>
             </Button>
