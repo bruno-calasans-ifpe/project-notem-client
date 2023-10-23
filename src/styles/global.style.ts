@@ -47,6 +47,17 @@ const GlobalStyle = createGlobalStyle`
         display: grid;
         grid-template-rows: auto 1fr var(--footerHeight);
     }
+
+    .op {
+        opacity: 1;
+        cursor: pointer;
+        transition: 0.5s;
+
+        &:hover {
+            opacity: 0.9;
+            transition: 0.5s;
+        }
+    }
 `
 
 export default GlobalStyle

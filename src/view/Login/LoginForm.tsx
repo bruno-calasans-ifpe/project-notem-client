@@ -1,7 +1,9 @@
+/* eslint-disable react/require-default-props */
 import { TextInput, Button, Group, Box, Flex, PasswordInput, Anchor, LoadingOverlay, Divider } from '@mantine/core'
 import { useForm } from '@mantine/form'
-import { IconAt, IconLock, IconLogin, IconBrandGoogle } from '@tabler/icons-react'
+import { IconAt, IconLock, IconBrandGoogle } from '@tabler/icons-react'
 import { useDisclosure } from '@mantine/hooks'
+import { useState } from 'react'
 import useAuthStore from '../../store/useAuthStore'
 
 type LoginFormInputs = {
@@ -9,8 +11,12 @@ type LoginFormInputs = {
   password: string
 }
 
-function LoginForm() {
-  const [loading, { open: start, close: stop }] = useDisclosure(false)
+type LoginFormProps = {
+  onLogin?: () => void
+}
+
+function LoginForm({ onLogin }: LoginFormProps) {
+  const [loading, setLoading] = useState(false)
   const { login } = useAuthStore()
 
   const form = useForm<LoginFormInputs>({
@@ -33,29 +39,31 @@ function LoginForm() {
     }
 
     // start loading
-    start()
+    setLoading(true)
+
+    // todo login api
     login({
       email: form.values.email,
       name: 'Test User',
       accountType: 'cliente',
     })
 
-    // todo login api
-    console.log(form.values)
-
+    if (onLogin) {
+      onLogin()
+    }
     // stop loading
-    stop()
+    setLoading(false)
   }
 
   const googleLoginHandler = async () => {
     // start loading
-    start()
+    setLoading(true)
 
     // todo login api
     console.log(form.values)
 
     // stop loading
-    stop()
+    setLoading(false)
   }
 
   return (

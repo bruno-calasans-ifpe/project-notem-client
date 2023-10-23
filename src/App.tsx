@@ -5,6 +5,7 @@
 import { Routes, Route } from 'react-router'
 
 // Layout
+import { useEffect } from 'react'
 import Header from './layout/Header/Header'
 import Main from './layout/Main/Main'
 import Footer from './layout/Footer/Footer'
@@ -20,9 +21,21 @@ import QA from './view/About/QA/QA'
 import Contacts from './view/About/Contacts/Contacts'
 import Terms from './view/About/Terms/Terms'
 import Privacy from './view/About/Privacy/Privacy'
+import AuthHome from './view/Auth/Home/AuthHome'
 
 function App() {
-  const { user } = useAuthStore((state) => state)
+  const { user, login } = useAuthStore((state) => state)
+
+  // mock user
+  useEffect(() => {
+    // login({
+    //   name: 'Test User',
+    //   email: 'test@gmail.com',
+    //   accountType: 'cliente',
+    // })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
       <Header />
@@ -30,8 +43,8 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home />}
-          ></Route>
+            element={user ? <AuthHome /> : <Home />}
+          />
           <Route
             path="/register"
             element={<Register />}

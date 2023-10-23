@@ -4,18 +4,19 @@ import LoginForm from './LoginForm'
 
 type LoginModalProps = {
   isOpen?: boolean
-  close: () => void
+  onClose: () => void
+  onLogin?: () => void
 }
 
-function LoginModal({ isOpen, close }: LoginModalProps) {
+function LoginModal({ isOpen, onClose, onLogin }: LoginModalProps) {
   return (
     <Modal
       opened={!!isOpen}
-      onClose={close}
+      onClose={onClose}
       title="Entre com a sua conta"
       centered
     >
-      <LoginForm />
+      <LoginForm onLogin={onLogin} />
     </Modal>
   )
 }
