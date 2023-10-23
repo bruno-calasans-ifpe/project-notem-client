@@ -12,6 +12,7 @@ import useAuthStore from './store/useAuthStore'
 
 // Views
 import Home from './view/Home/Home'
+import Register from './view/Register/Register'
 
 function App() {
   const { user } = useAuthStore((state) => state)
@@ -23,6 +24,10 @@ function App() {
           <Route
             path="/"
             element={<Home />}
+          ></Route>
+          <Route
+            path="/register"
+            element={<Register />}
           ></Route>
         </Routes>
       </Main>
