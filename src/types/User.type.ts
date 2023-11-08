@@ -1,4 +1,4 @@
-export type AccountType = 'cliente' | 'vendendo'
+export type AccountType = 'cliente' | 'vendedor'
 
 export type User = {
   name: string
