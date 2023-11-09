@@ -13,6 +13,7 @@ import useAuthStore from './store/useAuthStore'
 
 // Views
 import AuthHome from './view/Auth/Home/AuthHome'
+import Beach from './view/Auth/Beach/Beach'
 
 function App() {
   const { user, login } = useAuthStore((state) => state)
@@ -33,10 +34,16 @@ function App() {
       <Main>
         <Routes>
           {user && (
-            <Route
-              path="/"
-              element={<AuthHome />}
-            />
+            <>
+              <Route
+                path="/"
+                element={<AuthHome />}
+              />
+              <Route
+                path="/beach/:name"
+                element={<Beach />}
+              />
+            </>
           )}
         </Routes>
       </Main>

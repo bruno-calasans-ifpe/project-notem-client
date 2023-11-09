@@ -48,6 +48,10 @@ const GlobalStyle = createGlobalStyle`
         grid-template-rows: auto 1fr var(--footerHeight);
     }
 
+    a {
+        text-decoration: none;
+    }
+
     .op {
         opacity: 1;
         cursor: pointer;

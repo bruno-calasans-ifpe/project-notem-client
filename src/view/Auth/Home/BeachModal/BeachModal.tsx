@@ -6,6 +6,8 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-no-useless-fragment */
 import { Text, Button, Modal, Flex, Title } from '@mantine/core'
+import { Link } from 'react-router-dom'
+import slugify from 'slugify'
 import ModalSection from './ModalSection/ModalSection'
 import Ratings from './Ratings/Ratings'
 import UserRating from './UserRating/UserRating'
@@ -75,15 +77,17 @@ function BeachModal({ opened, close, beach }: BeachModalProps) {
               <UserRating initalRating={beach.userRating} />
             </ModalSection>
 
-            <Button
-              variant="light"
-              color="blue"
-              fullWidth
-              mt="md"
-              radius="md"
-            >
-              Selecionar
-            </Button>
+            <Link to={`/beach/${slugify(beach.name, { lower: true })}`}>
+              <Button
+                variant="light"
+                color="blue"
+                fullWidth
+                mt="md"
+                radius="md"
+              >
+                Selecionar
+              </Button>
+            </Link>
           </Flex>
         </Flex>
       </Modal>

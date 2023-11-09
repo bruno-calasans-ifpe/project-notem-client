@@ -6,6 +6,8 @@
 import { Text, Card, Image, Group, Button, ActionIcon } from '@mantine/core'
 import { IconInfoCircle } from '@tabler/icons-react'
 import { useDisclosure } from '@mantine/hooks'
+import { Link } from 'react-router-dom'
+import slugify from 'slugify'
 import BeachModal from '../BeachModal/BeachModal'
 import type { Beach } from '../../../../types/Beach'
 import ActionIconOverlay from '../../../../components/Overlay/Overlay'
@@ -64,15 +66,17 @@ function BeachCard({ beach }: BeachCardProps) {
           {beach.location}
         </Text>
 
-        <Button
-          variant="light"
-          color="blue"
-          fullWidth
-          mt="md"
-          radius="md"
-        >
-          Selecionar Praia
-        </Button>
+        <Link to={`/beach/${slugify(beach.name, { lower: true })}`}>
+          <Button
+            variant="light"
+            color="blue"
+            fullWidth
+            mt="md"
+            radius="md"
+          >
+            Selecionar Praia
+          </Button>
+        </Link>
         <ActionIconOverlay>
           <ActionIcon
             variant="subtle"
