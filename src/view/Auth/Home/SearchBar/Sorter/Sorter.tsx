@@ -1,7 +1,16 @@
 /* eslint-disable react/require-default-props */
 import { useSetState } from '@mantine/hooks'
 import { useForm } from '@mantine/form'
-import { Group, ActionIcon, Tooltip, Popover, Select, Title, Button, Text } from '@mantine/core'
+import {
+  Group,
+  ActionIcon,
+  Tooltip,
+  Popover,
+  Select,
+  Title,
+  Button,
+  Text,
+} from '@mantine/core'
 import { IconArrowsSort } from '@tabler/icons-react'
 import { orderBy, orderDirections, SortState, SortOptions } from './Sorter.type'
 
@@ -63,7 +72,9 @@ function Sorter({ onApply, onChange, onReset }: SortProps) {
         </Popover.Target>
         <Popover.Dropdown>
           <Title order={2}>Ordenador</Title>
-          <Text c="dimmed">{sort.applied ? 'Ordenação aplicada' : 'Nenhuma ordenação aplicada'}</Text>
+          <Text c="dimmed">
+            {sort.applied ? 'Ordenação aplicada' : 'Nenhuma ordenação aplicada'}
+          </Text>
           <Select
             label="Ordenar por"
             mt="md"

@@ -22,7 +22,12 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 90
+      }
+    ],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "react/jsx-no-bind": "off",
@@ -33,7 +38,11 @@
     "no-return-await": "off",
     "import/no-extraneous-dependencies": [
       "off",
-      { "devDependencies": false, "optionalDependencies": false, "peerDependencies": false }
+      {
+        "devDependencies": false,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
     ]
   }
 }

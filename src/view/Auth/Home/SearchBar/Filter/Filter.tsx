@@ -76,7 +76,9 @@ function Filter({ onApply, onChange, onReset }: FilterProps) {
 
         <Popover.Dropdown>
           <Title order={2}>Filtro</Title>
-          <Text c="dimmed">{filter.applied ? 'Filtro aplicado' : 'Nenhum filtro aplicado'}</Text>
+          <Text c="dimmed">
+            {filter.applied ? 'Filtro aplicado' : 'Nenhum filtro aplicado'}
+          </Text>
           <MultiSelect
             mt="md"
             label="Por produto"

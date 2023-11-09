@@ -10,7 +10,12 @@ type ActionIconOverlayProps = {
   zIndex?: number
 }
 
-function ActionIconOverlay({ children, position, offset = 5, zIndex = 100 }: ActionIconOverlayProps) {
+function ActionIconOverlay({
+  children,
+  position,
+  offset = 5,
+  zIndex = 100,
+}: ActionIconOverlayProps) {
   const positionStyle: React.CSSProperties = {}
 
   switch (position) {

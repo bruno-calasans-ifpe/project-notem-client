@@ -1,7 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 import { useState } from 'react'
 import { Image } from '@mantine/core'
-import { Carousel, useAnimationOffsetEffect, Embla, CarouselProps } from '@mantine/carousel'
+import {
+  Carousel,
+  useAnimationOffsetEffect,
+  Embla,
+  CarouselProps,
+} from '@mantine/carousel'
 
 type CustomCarouselProps = CarouselProps & {
   images: string[]

@@ -10,7 +10,15 @@ import {
   IconStar,
 } from '@tabler/icons-react'
 import { useLocation } from 'react-router'
-import { Container, TopHeader, LogoArea, MenuArea, BottomHeader, WelcomeMsgArea, ObsArea } from './header.style'
+import {
+  Container,
+  TopHeader,
+  LogoArea,
+  MenuArea,
+  BottomHeader,
+  WelcomeMsgArea,
+  ObsArea,
+} from './header.style'
 import useAuthStore from '../../store/useAuthStore'
 
 function Header() {
@@ -131,10 +139,10 @@ function Header() {
             fw="bold"
             c="dark"
           >
-            Vai curtir um dia de praia? Que tal aproveitar tudo o que há de melhor em termos de produtos e serviços, na
-            praia que você escolheu
-            <Anchor href="#obs1">*</Anchor>, sem ter que ficar procurando por eles? No NOTem você encontra diversos
-            vendedores dispostos a levar de tudo
+            Vai curtir um dia de praia? Que tal aproveitar tudo o que há de melhor em
+            termos de produtos e serviços, na praia que você escolheu
+            <Anchor href="#obs1">*</Anchor>, sem ter que ficar procurando por eles? No
+            NOTem você encontra diversos vendedores dispostos a levar de tudo
             <Anchor href="#obs2">**</Anchor>, bem onde você está!
           </Text>
 

@@ -1,7 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/order */
 /* eslint-disable no-restricted-syntax */
-import { Flex, Text, Rating, Group, Anchor, Modal, Title, ScrollArea } from '@mantine/core'
+import {
+  Flex,
+  Text,
+  Rating,
+  Group,
+  Anchor,
+  Modal,
+  Title,
+  ScrollArea,
+} from '@mantine/core'
 import { BeachRating } from '../../../../../types/Beach'
 import { useSetState, useDisclosure } from '@mantine/hooks'
 import { useEffect } from 'react'

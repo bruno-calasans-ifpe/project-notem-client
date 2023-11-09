@@ -1,7 +1,16 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/require-default-props */
 /* eslint-disable import/order */
-import { Text, Group, Button, ActionIcon, Flex, Rating, Textarea, Menu } from '@mantine/core'
+import {
+  Text,
+  Group,
+  Button,
+  ActionIcon,
+  Flex,
+  Rating,
+  Textarea,
+  Menu,
+} from '@mantine/core'
 import type { BeachRating } from '../../../../../types/Beach'
 import { useSetState } from '@mantine/hooks'
 import { IconEditCircle, IconTrash, IconDotsVertical } from '@tabler/icons-react'
