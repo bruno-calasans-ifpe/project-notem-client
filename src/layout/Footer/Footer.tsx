@@ -1,6 +1,17 @@
 import { Anchor, Group, List, Text, Image, Flex } from '@mantine/core'
-import { IconBrandFacebook, IconBrandInstagram, IconBrandTwitter } from '@tabler/icons-react'
-import { Container, LinksArea, FollowArea, Lists, UpperFooter, BottomFooter } from './footer.style'
+import {
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandTwitter,
+} from '@tabler/icons-react'
+import {
+  Container,
+  LinksArea,
+  FollowArea,
+  Lists,
+  UpperFooter,
+  BottomFooter,
+} from './footer.style'
 
 function Footer() {
   return (
