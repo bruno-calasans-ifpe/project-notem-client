@@ -29,7 +29,7 @@ function LocationConfig() {
     >
       <Popover.Target>
         <ActionIcon
-          variant="filled"
+          variant="subtle"
           aria-label="Settings"
           size="lg"
           onClick={openHandler}
