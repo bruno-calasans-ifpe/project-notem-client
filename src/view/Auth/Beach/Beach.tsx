@@ -1,13 +1,16 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Flex, Button } from '@mantine/core'
-import { IconArrowBackUp } from '@tabler/icons-react'
+import { Flex, Button, Tabs, Image, Text, Group } from '@mantine/core'
+import { IconArrowBackUp, IconBookmark, IconBookmarkFilled } from '@tabler/icons-react'
 import { Link } from 'react-router-dom'
 import Section from '../../../components/Section/Section'
 import { Beach } from '../../../types/Beach'
 import LocationConfig from './LocationConfig/LocationConfig'
 import reverseSlugify from '../../../utils/reverseSlugify'
+import ItemCard from './ItemCard/ItemCard'
+import VendorItems from './VendorItems/VendorItems'
 
 function SelectedBeach() {
   const { name } = useParams()
@@ -107,6 +110,74 @@ function SelectedBeach() {
               Selecionar outra praia
             </Button>
           </Link>
+        </Flex>
+        <Flex>
+          <Tabs
+            variant="default"
+            defaultValue="items"
+            radius="sm"
+          >
+            <Tabs.List mb={20}>
+              <Tabs.Tab value="items">Items</Tabs.Tab>
+              <Tabs.Tab value="vendors">Vendedores</Tabs.Tab>
+            </Tabs.List>
+
+            <Tabs.Panel
+              value="items"
+              pl={10}
+            >
+              <VendorItems
+                name="Thiago Costa"
+                img="https://www.svgrepo.com/show/350417/user-circle.svg"
+                rating={4}
+                items={[
+                  <ItemCard
+                    name="Cerveja Gourmet com creme de merda seca + óleo de virgem"
+                    price={50}
+                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
+                  />,
+                  <ItemCard
+                    name="Cerveja Gourmet"
+                    price={50}
+                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
+                  />,
+                  <ItemCard
+                    name="Cerveja Gourmet"
+                    price={50}
+                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
+                  />,
+                  <ItemCard
+                    name="Cerveja Gourmet"
+                    price={50}
+                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
+                  />,
+                  <ItemCard
+                    name="Cerveja Gourmet"
+                    price={50}
+                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
+                  />,
+                ]}
+              />
+
+              <VendorItems
+                name="Isadora Leite"
+                img="https://www.svgrepo.com/show/350417/user-circle.svg"
+                rating={3}
+                items={[
+                  <ItemCard
+                    name="Cerveja Gourmet com creme de merda seca + óleo de virgem"
+                    price={50}
+                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
+                  />,
+                  <ItemCard
+                    name="Cerveja Gourmet"
+                    price={50}
+                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
+                  />,
+                ]}
+              />
+            </Tabs.Panel>
+          </Tabs>
         </Flex>
       </Flex>
     </Section>

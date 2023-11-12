@@ -5,7 +5,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-no-useless-fragment */
-import { Text, Button, Modal, Flex, Title } from '@mantine/core'
+import { Text, Button, Modal, Flex, Title, Image } from '@mantine/core'
 import { Link } from 'react-router-dom'
 import slugify from 'slugify'
 import ModalSection from './ModalSection/ModalSection'
@@ -35,7 +35,14 @@ function BeachModal({ opened, close, beach }: BeachModalProps) {
           blur: 3,
         }}
       >
-        <CustomCarousel images={beach.images} />
+        <CustomCarousel
+          items={beach.images.map((img) => (
+            <Image
+              src={img}
+              key={img}
+            />
+          ))}
+        />
         <Flex
           direction="column"
           align="center"

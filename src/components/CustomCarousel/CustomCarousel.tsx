@@ -9,10 +9,10 @@ import {
 } from '@mantine/carousel'
 
 type CustomCarouselProps = CarouselProps & {
-  images: string[]
+  items: React.ReactNode[]
 }
 
-function CustomCarousel({ images, ...carouselProps }: CustomCarouselProps) {
+function CustomCarousel({ items, ...carouselProps }: CustomCarouselProps) {
   // carousel bug fix
   const [embla, setEmbla] = useState<Embla | null>(null)
   useAnimationOffsetEffect(embla, 200)
@@ -26,14 +26,8 @@ function CustomCarousel({ images, ...carouselProps }: CustomCarouselProps) {
       slideGap="xs"
       {...carouselProps}
     >
-      {images.map((image, key) => (
-        <Carousel.Slide key={key}>
-          <Image
-            src={image}
-            height="100%"
-            alt="Norway"
-          />
-        </Carousel.Slide>
+      {items.map((item, key) => (
+        <Carousel.Slide key={key}>{item}</Carousel.Slide>
       ))}
     </Carousel>
   )
