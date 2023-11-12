@@ -2,15 +2,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Flex, Button, Tabs, Image, Text, Group } from '@mantine/core'
-import { IconArrowBackUp, IconBookmark, IconBookmarkFilled } from '@tabler/icons-react'
+import { Flex, Button, Tabs, SimpleGrid } from '@mantine/core'
+import { IconArrowBackUp } from '@tabler/icons-react'
 import { Link } from 'react-router-dom'
 import Section from '../../../components/Section/Section'
 import { Beach } from '../../../types/Beach'
 import LocationConfig from './LocationConfig/LocationConfig'
 import reverseSlugify from '../../../utils/reverseSlugify'
-import ItemCard from './ItemCard/ItemCard'
 import VendorItems from './VendorItems/VendorItems'
+import VendorCard from './VendorCard/VendorCard'
+import type { Item } from '../../../types/Item'
+import type { Vendor } from '../../../types/Vendor'
+
+type ItemsPerVendor = {
+  vendor: Vendor
+  items: Item[]
+}
 
 function SelectedBeach() {
   const { name } = useParams()
@@ -74,11 +81,93 @@ function SelectedBeach() {
     setLoading(false)
   }
 
+  const favoriteItemHandler = (item: Item, vendor: Vendor) => {
+    console.log(item, vendor)
+  }
+
   useEffect(() => {
     if (name) {
       loadBeach()
     }
   }, [name])
+
+  const vendorItems: ItemsPerVendor[] = [
+    {
+      vendor: {
+        name: 'Thiago Costa',
+        img: 'https://www.svgrepo.com/show/350417/user-circle.svg',
+        rating: 5,
+      },
+      items: [
+        {
+          name: 'Cerveja com creme de merda seca + óleo de virgem',
+          price: 50,
+          img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+          type: 'product',
+        },
+        {
+          name: 'Cerveja de Chocolate',
+          price: 100,
+          img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+          type: 'product',
+        },
+        {
+          name: 'Cerveja Gourmet',
+          price: 100,
+          img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+          type: 'product',
+        },
+        {
+          name: 'Cerveja Amanteigada',
+          price: 80,
+          img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+          type: 'product',
+        },
+        {
+          name: 'Cerveja de Pedra',
+          price: 60,
+          img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+          type: 'product',
+        },
+      ],
+    },
+    {
+      vendor: {
+        name: 'Thomas Turbando',
+        img: 'https://www.svgrepo.com/show/350417/user-circle.svg',
+        rating: 1,
+      },
+      items: [
+        {
+          name: 'Cerveja Gourmet',
+          price: 100,
+          img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+          type: 'product',
+        },
+        {
+          name: 'Aula de Cerveja',
+          price: 100,
+          img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+          type: 'service',
+        },
+      ],
+    },
+    {
+      vendor: {
+        name: 'Paula Tejando',
+        img: 'https://www.svgrepo.com/show/350417/user-circle.svg',
+        rating: 3,
+      },
+      items: [
+        {
+          name: 'Aula de Cerveja',
+          price: 100,
+          img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+          type: 'service',
+        },
+      ],
+    },
+  ]
 
   return (
     <Section
@@ -111,74 +200,55 @@ function SelectedBeach() {
             </Button>
           </Link>
         </Flex>
-        <Flex>
-          <Tabs
-            variant="default"
-            defaultValue="items"
-            radius="sm"
+
+        <Tabs
+          variant="default"
+          defaultValue="items"
+          radius="sm"
+        >
+          <Tabs.List mb={20}>
+            <Tabs.Tab value="items">Items</Tabs.Tab>
+            <Tabs.Tab value="vendors">Vendedores</Tabs.Tab>
+          </Tabs.List>
+
+          <Tabs.Panel
+            id="vendor-items"
+            value="items"
+            pl={10}
           >
-            <Tabs.List mb={20}>
-              <Tabs.Tab value="items">Items</Tabs.Tab>
-              <Tabs.Tab value="vendors">Vendedores</Tabs.Tab>
-            </Tabs.List>
-
-            <Tabs.Panel
-              value="items"
-              pl={10}
+            <Flex
+              direction="column"
+              gap={10}
             >
-              <VendorItems
-                name="Thiago Costa"
-                img="https://www.svgrepo.com/show/350417/user-circle.svg"
-                rating={4}
-                items={[
-                  <ItemCard
-                    name="Cerveja Gourmet com creme de merda seca + óleo de virgem"
-                    price={50}
-                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
-                  />,
-                  <ItemCard
-                    name="Cerveja Gourmet"
-                    price={50}
-                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
-                  />,
-                  <ItemCard
-                    name="Cerveja Gourmet"
-                    price={50}
-                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
-                  />,
-                  <ItemCard
-                    name="Cerveja Gourmet"
-                    price={50}
-                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
-                  />,
-                  <ItemCard
-                    name="Cerveja Gourmet"
-                    price={50}
-                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
-                  />,
-                ]}
-              />
+              {vendorItems.map(({ vendor, items }) => (
+                <VendorItems
+                  vendor={vendor}
+                  items={items}
+                  onFavoriteItem={favoriteItemHandler}
+                  key={vendor.name}
+                />
+              ))}
+            </Flex>
+          </Tabs.Panel>
 
-              <VendorItems
-                name="Isadora Leite"
-                img="https://www.svgrepo.com/show/350417/user-circle.svg"
-                rating={3}
-                items={[
-                  <ItemCard
-                    name="Cerveja Gourmet com creme de merda seca + óleo de virgem"
-                    price={50}
-                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
-                  />,
-                  <ItemCard
-                    name="Cerveja Gourmet"
-                    price={50}
-                    img="https://cdn-icons-png.flaticon.com/512/4129/4129528.png"
-                  />,
-                ]}
-              />
-            </Tabs.Panel>
-          </Tabs>
-        </Flex>
+          <Tabs.Panel
+            id="vendors"
+            value="vendors"
+            pl={10}
+            style={{
+              justifyContent: 'space-between',
+            }}
+          >
+            <SimpleGrid cols={3}>
+              {vendorItems.map(({ vendor }) => (
+                <VendorCard
+                  vendor={vendor}
+                  key={vendor.name}
+                />
+              ))}
+            </SimpleGrid>
+          </Tabs.Panel>
+        </Tabs>
       </Flex>
     </Section>
   )

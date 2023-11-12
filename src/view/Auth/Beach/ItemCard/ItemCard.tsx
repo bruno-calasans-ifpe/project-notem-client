@@ -1,26 +1,29 @@
 /* eslint-disable react/require-default-props */
-import { Flex, Group, Image, Text, ActionIcon, Card, Button } from '@mantine/core'
-import { IconBookmark, IconBookmarkFilled, IconInfoCircle } from '@tabler/icons-react'
+import { Flex, Image, Text, ActionIcon, Card, Badge } from '@mantine/core'
+import { IconStar, IconStarFilled } from '@tabler/icons-react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import slugify from 'slugify'
 import ActionIconOverlay from '../../../../components/Overlay/Overlay'
+import type { Item } from '../../../../types/Item'
 
 type ItemCardProps = {
-  name: string
-  price: number
-  img: string
-  onBookmark?: () => void
-  onClick?: () => void
+  item: Item
+  onFavorite?: (item: Item) => void
+  onClick?: (item: Item) => void
 }
 
-function ItemCard({ name, price, img, onClick, onBookmark }: ItemCardProps) {
-  const [bookmark, setBookmark] = useState(false)
+function ItemCard({ item, onClick, onFavorite }: ItemCardProps) {
+  const [favorite, setFavorite] = useState(false)
 
-  const bookmarkHandler = () => {
-    setBookmark((curr) => !curr)
-    if (onBookmark) {
-      onBookmark()
+  const favoriteHandler = () => {
+    setFavorite((curr) => !curr)
+    if (onFavorite) {
+      onFavorite(item)
+    }
+  }
+
+  const clickHandler = () => {
+    if (onClick) {
+      onClick(item)
     }
   }
 
@@ -31,17 +34,16 @@ function ItemCard({ name, price, img, onClick, onBookmark }: ItemCardProps) {
       p={5}
     >
       <Card
-        // shadow="sm"
         padding="lg"
         radius="md"
         h="100%"
       >
         <Card.Section className="op">
           <Image
-            src={img}
-            alt={name}
+            src={item.img}
+            alt={item.name}
             h="100%"
-            onClick={onClick}
+            onClick={clickHandler}
           />
         </Card.Section>
 
@@ -52,18 +54,25 @@ function ItemCard({ name, price, img, onClick, onBookmark }: ItemCardProps) {
           mb="xs"
           gap={5}
         >
+          <Badge
+            size="xs"
+            color={item.type === 'product' ? 'cyan' : 'grape'}
+          >
+            {item.type === 'product' ? 'produto' : 'serviço'}
+          </Badge>
           <Text
             size="sm"
             fw="bold"
           >
-            {name}
+            {item.name}
           </Text>
+
           <Text
             size="sm"
             fw="bold"
             c="green"
           >
-            R$ {price},00
+            R$ {item.price},00
           </Text>
         </Flex>
 
@@ -71,14 +80,19 @@ function ItemCard({ name, price, img, onClick, onBookmark }: ItemCardProps) {
           <ActionIcon
             variant="subtle"
             c="blue"
-            onClick={bookmarkHandler}
+            onClick={favoriteHandler}
           >
-            <IconBookmark
-              style={{ width: 30, height: 30 }}
-              stroke={1.5}
-              fill={bookmark ? 'green' : 'transparent'}
-              color={bookmark ? 'green' : 'blue'}
-            />
+            {favorite ? (
+              <IconStarFilled
+                style={{ width: 15, height: 15, color: 'green' }}
+                stroke={1.5}
+              />
+            ) : (
+              <IconStar
+                style={{ width: 15, height: 15, color: 'green' }}
+                stroke={1.5}
+              />
+            )}
           </ActionIcon>
         </ActionIconOverlay>
       </Card>
