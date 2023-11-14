@@ -1,10 +1,19 @@
 import { useState } from 'react'
 import { useForm } from '@mantine/form'
-import { Flex, Checkbox, Box, Button, ActionIcon, Title, Popover } from '@mantine/core'
-import { IconAdjustments } from '@tabler/icons-react'
-import { LocationOptions } from './LocationConfig.type'
+import {
+  Flex,
+  Checkbox,
+  Box,
+  Button,
+  ActionIcon,
+  Title,
+  Popover,
+  Tooltip,
+} from '@mantine/core'
+import { IconCurrentLocation } from '@tabler/icons-react'
+import { LocationOptions } from './Location.type'
 
-function LocationConfig() {
+function Location() {
   const [open, setOpen] = useState(false)
   const locationForm = useForm<LocationOptions>({
     initialValues: {
@@ -28,17 +37,19 @@ function LocationConfig() {
       position="bottom-start"
     >
       <Popover.Target>
-        <ActionIcon
-          variant="subtle"
-          aria-label="Settings"
-          size="lg"
-          onClick={openHandler}
-        >
-          <IconAdjustments
-            style={{ width: '70%', height: '70%' }}
-            stroke={1.5}
-          />
-        </ActionIcon>
+        <Tooltip label="Localização">
+          <ActionIcon
+            variant="filled"
+            aria-label="Settings"
+            size="lg"
+            onClick={openHandler}
+          >
+            <IconCurrentLocation
+              style={{ width: '70%', height: '70%' }}
+              stroke={1.5}
+            />
+          </ActionIcon>
+        </Tooltip>
       </Popover.Target>
       <Popover.Dropdown>
         <Flex
@@ -100,4 +111,4 @@ function LocationConfig() {
   )
 }
 
-export default LocationConfig
+export default Location

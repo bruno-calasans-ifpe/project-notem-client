@@ -18,7 +18,7 @@ function SearchBar() {
   return (
     <Group
       id="beach-search-bar"
-      justify="flex-end"
+      justify="flex-start"
       align="center"
       mt="md"
     >
@@ -37,7 +37,7 @@ function SearchBar() {
       <Filter />
 
       {/* Sort form */}
-      <Sorter />
+      <Sorter data={['nome', 'avaliação', 'periculosidade']} />
 
       <Search onChange={console.log} />
     </Group>

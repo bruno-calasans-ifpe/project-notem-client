@@ -12,15 +12,16 @@ import {
   Text,
 } from '@mantine/core'
 import { IconArrowsSort } from '@tabler/icons-react'
-import { orderBy, orderDirections, SortState, SortOptions } from './Sorter.type'
+import { orderDirections, SortState, SortOptions } from './Sorter.type'
 
 type SortProps = {
+  data: string[]
   onApply?: (order: SortState) => void
   onReset?: (order: SortState) => void
   onChange?: (order: SortState) => void
 }
 
-function Sorter({ onApply, onChange, onReset }: SortProps) {
+function Sorter({ data, onApply, onChange, onReset }: SortProps) {
   const [sort, setSort] = useSetState<SortState>({
     opened: false,
     applied: false,
@@ -29,7 +30,7 @@ function Sorter({ onApply, onChange, onReset }: SortProps) {
 
   const sortForm = useForm<SortOptions>({
     initialValues: {
-      orderBy: orderBy[0],
+      orderBy: data[0],
       direction: orderDirections[0],
     },
   })
@@ -78,7 +79,7 @@ function Sorter({ onApply, onChange, onReset }: SortProps) {
           <Select
             label="Ordenar por"
             mt="md"
-            data={orderBy as unknown as string[]}
+            data={data}
             allowDeselect={false}
             {...sortForm.getInputProps('orderBy')}
           />
@@ -91,14 +92,14 @@ function Sorter({ onApply, onChange, onReset }: SortProps) {
             {...sortForm.getInputProps('direction')}
           />
 
-          <Group justify="flex-end">
+          <Group justify="space-between">
             <Button
               mt="lg"
               size="compact-sm"
               variant="light"
               onClick={resetSortHandler}
             >
-              Limpar ordenação
+              limpar
             </Button>
             <Button
               mt="lg"

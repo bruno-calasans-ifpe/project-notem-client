@@ -7,13 +7,14 @@ import { IconArrowBackUp } from '@tabler/icons-react'
 import { Link } from 'react-router-dom'
 import Section from '../../../components/Section/Section'
 import { Beach } from '../../../types/Beach'
-import LocationConfig from './LocationConfig/LocationConfig'
+import Location from './Location/Location'
 import reverseSlugify from '../../../utils/reverseSlugify'
 import VendorItems from './VendorItems/VendorItems'
 import VendorCard from './VendorCard/VendorCard'
 import type { Item } from '../../../types/Item'
 import type { Vendor } from '../../../types/Vendor'
 import Search from '../Home/SearchBar/Search/Search'
+import Sorter from '../Home/SearchBar/Sorter/Sorter'
 
 type ItemsPerVendor = {
   vendor: Vendor
@@ -192,8 +193,10 @@ function SelectedBeach() {
           <Flex
             direction="row"
             justify="space-between"
+            gap={5}
           >
-            <LocationConfig />
+            <Location />
+            <Sorter data={['preço', 'avaliação']} />
           </Flex>
           <Link to="/">
             <Button
