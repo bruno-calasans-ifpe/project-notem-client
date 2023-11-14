@@ -1,14 +1,16 @@
 /* eslint-disable react/require-default-props */
-import { ActionIcon, TextInput, Tooltip } from '@mantine/core'
+import { ActionIcon, TextInput, Tooltip, Flex } from '@mantine/core'
 import { IconX } from '@tabler/icons-react'
 import { useState } from 'react'
 
 type SearchProps = {
+  value?: string
+  placeholder?: string
   onChange?: (search: string) => void
   onReset?: (search: string) => void
 }
 
-function Search({ onChange, onReset }: SearchProps) {
+function Search({ placeholder, value, onChange, onReset }: SearchProps) {
   const [search, setSearch] = useState('')
 
   const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,14 +29,17 @@ function Search({ onChange, onReset }: SearchProps) {
   }
 
   return (
-    <>
+    <Flex
+      gap={5}
+      w="100%"
+    >
       {/* Input Search */}
       <TextInput
-        value={search}
+        value={value ?? search}
         onChange={searchHandler}
         size="sm"
         radius="sm"
-        placeholder="Pesquisar praia por nome ou localização"
+        placeholder={placeholder ?? 'Pesquise por algo'}
         style={{
           flexGrow: 1,
         }}
@@ -55,7 +60,7 @@ function Search({ onChange, onReset }: SearchProps) {
           </ActionIcon>
         </Tooltip>
       )}
-    </>
+    </Flex>
   )
 }
 

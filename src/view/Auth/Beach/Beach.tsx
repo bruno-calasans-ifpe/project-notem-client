@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Flex, Button, Tabs, SimpleGrid } from '@mantine/core'
+import { Flex, Button, Tabs, SimpleGrid, Text, Group } from '@mantine/core'
 import { IconArrowBackUp } from '@tabler/icons-react'
 import { Link } from 'react-router-dom'
 import Section from '../../../components/Section/Section'
@@ -13,16 +13,21 @@ import VendorItems from './VendorItems/VendorItems'
 import VendorCard from './VendorCard/VendorCard'
 import type { Item } from '../../../types/Item'
 import type { Vendor } from '../../../types/Vendor'
+import Search from '../Home/SearchBar/Search/Search'
 
 type ItemsPerVendor = {
   vendor: Vendor
   items: Item[]
 }
 
+type PossibleTabs = 'items' | 'vendors'
+
 function SelectedBeach() {
   const { name } = useParams()
   const [loading, setLoading] = useState(false)
   const [beach, setBeach] = useState<Beach | null>(null)
+  const [search, setSearch] = useState('')
+  const [tab, setTab] = useState<PossibleTabs>('items')
 
   // todo api to get beach by name
   const loadBeach = () => {
@@ -178,7 +183,7 @@ function SelectedBeach() {
       <Flex
         direction="column"
         justify="space-between"
-        gap={20}
+        gap={10}
       >
         <Flex
           direction="row"
@@ -187,7 +192,6 @@ function SelectedBeach() {
           <Flex
             direction="row"
             justify="space-between"
-            gap={50}
           >
             <LocationConfig />
           </Flex>
@@ -201,14 +205,54 @@ function SelectedBeach() {
           </Link>
         </Flex>
 
+        <Flex
+          direction="column"
+          gap={20}
+        >
+          <Flex gap={5}>
+            <Search
+              value={search}
+              placeholder={
+                tab === 'items'
+                  ? 'Pesquise por um produto ou serviço'
+                  : 'Pesquise por um vendedor'
+              }
+              onChange={setSearch}
+              onReset={() => setSearch('')}
+            />
+          </Flex>
+          {search && (
+            <Flex gap={5}>
+              <Text
+                size="lg"
+                fw="bold"
+              >
+                Resultados para
+              </Text>
+              <Text
+                size="lg"
+                fw="bold"
+                c="red"
+              >
+                {search}
+              </Text>
+            </Flex>
+          )}
+        </Flex>
+
         <Tabs
           variant="default"
-          defaultValue="items"
+          defaultValue={tab}
           radius="sm"
+          onChange={(value) => setTab(value as PossibleTabs)}
         >
           <Tabs.List mb={20}>
-            <Tabs.Tab value="items">Items</Tabs.Tab>
-            <Tabs.Tab value="vendors">Vendedores</Tabs.Tab>
+            <Tabs.Tab value="items">
+              <Text fw="bold">Items</Text>
+            </Tabs.Tab>
+            <Tabs.Tab value="vendors">
+              <Text fw="bold">Vendedores</Text>
+            </Tabs.Tab>
           </Tabs.List>
 
           <Tabs.Panel
