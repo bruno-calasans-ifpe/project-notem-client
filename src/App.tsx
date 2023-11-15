@@ -14,6 +14,7 @@ import useAuthStore from './store/useAuthStore'
 // Views
 import AuthHome from './view/Auth/Home/AuthHome'
 import Beach from './view/Auth/Beach/Beach'
+import Catalog from './view/Auth/Catalog/Catalog'
 
 function App() {
   const { user, login } = useAuthStore((state) => state)
@@ -42,6 +43,10 @@ function App() {
               <Route
                 path="/beach/:name"
                 element={<Beach />}
+              />
+              <Route
+                path="/vendor/:name"
+                element={<Catalog />}
               />
             </>
           )}

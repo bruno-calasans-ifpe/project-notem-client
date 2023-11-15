@@ -5,4 +5,5 @@ export type Item = {
   price: number
   img: string
   type: ItemType
+  categories: string[]
 }

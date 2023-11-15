@@ -34,15 +34,14 @@ function ItemCard({ item, onClick, onFavorite }: ItemCardProps) {
       p={5}
     >
       <Card
-        padding="lg"
         radius="md"
+        w="100%"
         h="100%"
       >
         <Card.Section className="op">
           <Image
             src={item.img}
             alt={item.name}
-            h="100%"
             onClick={clickHandler}
           />
         </Card.Section>
@@ -54,19 +53,26 @@ function ItemCard({ item, onClick, onFavorite }: ItemCardProps) {
           mb="xs"
           gap={5}
         >
-          <Badge
-            size="xs"
-            color={item.type === 'product' ? 'cyan' : 'grape'}
+          <Flex
+            gap={5}
+            direction="column"
           >
-            {item.type === 'product' ? 'produto' : 'serviço'}
-          </Badge>
-          <Text
-            size="sm"
-            fw="bold"
-          >
-            {item.name}
-          </Text>
-
+            <Badge
+              size="xs"
+              color={item.type === 'product' ? 'cyan' : 'grape'}
+            >
+              {item.type === 'product' ? 'produto' : 'serviço'}
+            </Badge>
+            {item.categories.map((category) => (
+              <Badge
+                size="xs"
+                key={category}
+              >
+                {category}
+              </Badge>
+            ))}
+          </Flex>
+          <Text size="sm">{item.name}</Text>
           <Text
             size="sm"
             fw="bold"

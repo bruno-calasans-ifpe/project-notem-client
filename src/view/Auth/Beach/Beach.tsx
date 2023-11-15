@@ -110,30 +110,35 @@ function SelectedBeach() {
           price: 50,
           img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
           type: 'product',
+          categories: ['cerveja'],
         },
         {
           name: 'Cerveja de Chocolate',
           price: 100,
           img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
           type: 'product',
+          categories: ['cerveja'],
         },
         {
           name: 'Cerveja Gourmet',
           price: 100,
           img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
           type: 'product',
+          categories: ['cerveja'],
         },
         {
           name: 'Cerveja Amanteigada',
           price: 80,
           img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
           type: 'product',
+          categories: ['cerveja'],
         },
         {
           name: 'Cerveja de Pedra',
           price: 60,
           img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
           type: 'product',
+          categories: ['cerveja'],
         },
       ],
     },
@@ -149,12 +154,14 @@ function SelectedBeach() {
           price: 100,
           img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
           type: 'product',
+          categories: ['cerveja'],
         },
         {
           name: 'Aula de Cerveja',
           price: 100,
           img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
           type: 'service',
+          categories: ['cerveja'],
         },
       ],
     },
@@ -170,6 +177,7 @@ function SelectedBeach() {
           price: 100,
           img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
           type: 'service',
+          categories: ['cerveja'],
         },
       ],
     },
@@ -188,16 +196,8 @@ function SelectedBeach() {
       >
         <Flex
           direction="row"
-          justify="space-between"
+          justify="flex-end"
         >
-          <Flex
-            direction="row"
-            justify="space-between"
-            gap={5}
-          >
-            <Location />
-            <Sorter data={['preço', 'avaliação']} />
-          </Flex>
           <Link to="/">
             <Button
               variant="subtle"
@@ -213,6 +213,14 @@ function SelectedBeach() {
           gap={20}
         >
           <Flex gap={5}>
+            <Flex
+              direction="row"
+              justify="space-between"
+              gap={5}
+            >
+              <Location />
+              <Sorter data={['preço', 'avaliação']} />
+            </Flex>
             <Search
               value={search}
               placeholder={
