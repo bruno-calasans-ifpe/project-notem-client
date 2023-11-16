@@ -4,7 +4,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Flex, Text, Tabs, Rating, Avatar, SimpleGrid } from '@mantine/core'
+import {
+  Flex,
+  Text,
+  Tabs,
+  Rating,
+  Avatar,
+  SimpleGrid,
+  Button,
+  ActionIcon,
+  Anchor,
+  Divider,
+} from '@mantine/core'
+import { IconArrowBackUp, IconInfoCircleFilled } from '@tabler/icons-react'
 import Section from '../../../components/Section/Section'
 import reverseSlugify from '../../../utils/reverseSlugify'
 import type { Vendor } from '../../../types/Vendor'
@@ -12,6 +24,7 @@ import Search from '../Home/SearchBar/Search/Search'
 import type { Item } from '../../../types/Item'
 import ItemCategory from './ItemCategory/ItemCategory'
 import ItemCard from '../Beach/ItemCard/ItemCard'
+import VendorDrawer from './VendorDrawer/VendorDrawer'
 
 type ItemsCategory = {
   category: string
@@ -23,6 +36,7 @@ function Catalog() {
   const [tab, setTab] = useState('Tudo')
   const [vendor, setVendor] = useState<Vendor | null>(null)
   const [items, setItems] = useState<Item[]>([])
+  const [vendorDrawer, setVendorDrawer] = useState(false)
 
   const loadVendor = () => {
     if (!name) {
@@ -32,6 +46,22 @@ function Catalog() {
       name,
       img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png',
       rating: 5,
+      info: {
+        about:
+          'Sou um vendedor sério que busca semppre dar muito duro naquilo que faz. Já aguentei muita poha nessa vida. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt exercitationem, earum ea accusantium recusandae eos labore nulla perferendis cupiditate tempore iste blanditiis saepe non, facilis voluptatem unde ipsam at doloribus.',
+        contacts: {
+          whatsapp: '81 9 12345678',
+          instagram: 'deide_costa',
+          twitter: '@deide_costa1234',
+          email: 'deide_costa@email.com',
+        },
+        paymentMethods: [
+          { category: 'Débito', name: 'Mastercard' },
+          { category: 'Débito', name: 'Visa' },
+          { category: 'Crédito', name: 'Mastercard' },
+          { category: 'Crédito', name: 'Visa' },
+        ],
+      },
     }
     setVendor(loadedVendor)
   }
@@ -88,6 +118,10 @@ function Catalog() {
     setTab(t)
   }
 
+  const vendorDrawerHandler = () => {
+    setVendorDrawer((curr) => !curr)
+  }
+
   const getItemsFromCategory = (category: string) => {
     return items.filter((item) => item.categories.includes(category.toLowerCase()))
   }
@@ -141,48 +175,72 @@ function Catalog() {
       >
         <Flex
           gap={20}
-          align="center"
+          direction="column"
         >
           <Flex
+            justify="space-between"
             align="center"
-            gap={5}
           >
-            <Avatar
-              src={vendor?.img}
-              w={50}
-              h={50}
-            />
             <Flex
-              direction="column"
-              justify="center"
+              gap={5}
               align="center"
             >
-              <Text
-                size="lg"
-                fw="bold"
-              >
-                {reverseSlugify(name!)}
-              </Text>
-
+              <Avatar
+                src={vendor?.img}
+                w={50}
+                h={50}
+              />
               <Flex
-                gap={5}
                 align="center"
+                gap={10}
               >
                 <Text
                   size="lg"
-                  fw="400"
+                  fw="bold"
+                  onClick={vendorDrawerHandler}
+                  style={{
+                    cursor: 'pointer',
+                  }}
                 >
-                  {vendor?.rating}.0
+                  {reverseSlugify(name!)}
                 </Text>
-                <Rating
-                  value={vendor?.rating}
-                  readOnly
-                />
+
+                <Flex
+                  gap={5}
+                  align="center"
+                >
+                  <Rating
+                    count={1}
+                    value={vendor?.rating}
+                    readOnly
+                  />
+                  <Text
+                    size="lg"
+                    fw="400"
+                  >
+                    {vendor?.rating}.0
+                  </Text>
+                </Flex>
               </Flex>
+
+              {vendor && (
+                <VendorDrawer
+                  opened={vendorDrawer}
+                  vendor={vendor}
+                  onClose={vendorDrawerHandler}
+                />
+              )}
             </Flex>
+            <Button
+              variant="subtle"
+              leftSection={<IconArrowBackUp />}
+            >
+              Voltar à praia
+            </Button>
           </Flex>
           <Search placeholder="Pesquiser por um produto ou serviço" />
         </Flex>
+        <Divider />
         <Tabs
           value={tab}
           onChange={changeTabHandler}

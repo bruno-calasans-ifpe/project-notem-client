@@ -100,9 +100,20 @@ function SelectedBeach() {
   const vendorItems: ItemsPerVendor[] = [
     {
       vendor: {
-        name: 'Thiago Costa',
+        name: 'Deide Costa',
         img: 'https://www.svgrepo.com/show/350417/user-circle.svg',
         rating: 5,
+        info: {
+          about:
+            'Sou um vendedor sério que busca semppre dar muito duro naquilo que faz. Já aguentei muita poha nessa vida. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt exercitationem, earum ea accusantium recusandae eos labore nulla perferendis cupiditate tempore iste blanditiis saepe non, facilis voluptatem unde ipsam at doloribus.',
+          contacts: {
+            whatsapp: '81 9 12345678',
+            instagram: 'deide_costa',
+            twitter: '@deide_costa1234',
+            email: 'deide_costa@email.com',
+          },
+          paymentMethods: [{ category: 'débito', name: 'Mastercard' }],
+        },
       },
       items: [
         {
@@ -147,6 +158,17 @@ function SelectedBeach() {
         name: 'Thomas Turbando',
         img: 'https://www.svgrepo.com/show/350417/user-circle.svg',
         rating: 1,
+        info: {
+          about:
+            'Sou um vendedor sério que busca semppre dar muito duro naquilo que faz. Já aguentei muita poha nessa vida. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt exercitationem, earum ea accusantium recusandae eos labore nulla perferendis cupiditate tempore iste blanditiis saepe non, facilis voluptatem unde ipsam at doloribus.',
+          contacts: {
+            whatsapp: '81 9 12345678',
+            instagram: 'deide_costa',
+            twitter: '@deide_costa1234',
+            email: 'deide_costa@email.com',
+          },
+          paymentMethods: [{ category: 'débito', name: 'Mastercard' }],
+        },
       },
       items: [
         {
@@ -170,6 +192,17 @@ function SelectedBeach() {
         name: 'Paula Tejando',
         img: 'https://www.svgrepo.com/show/350417/user-circle.svg',
         rating: 3,
+        info: {
+          about:
+            'Sou um vendedor sério que busca semppre dar muito duro naquilo que faz. Já aguentei muita poha nessa vida. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt exercitationem, earum ea accusantium recusandae eos labore nulla perferendis cupiditate tempore iste blanditiis saepe non, facilis voluptatem unde ipsam at doloribus.',
+          contacts: {
+            whatsapp: '81 9 12345678',
+            instagram: 'deide_costa',
+            twitter: '@deide_costa1234',
+            email: 'deide_costa@email.com',
+          },
+          paymentMethods: [{ category: 'débito', name: 'Mastercard' }],
+        },
       },
       items: [
         {
