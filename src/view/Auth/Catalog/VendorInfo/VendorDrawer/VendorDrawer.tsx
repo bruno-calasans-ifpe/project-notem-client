@@ -6,7 +6,7 @@ import {
   IconBrandTwitter,
   IconBrandGmail,
 } from '@tabler/icons-react'
-import type { Vendor } from '../../../../types/Vendor'
+import type { Vendor } from '../../../../../types/Vendor'
 import ContactCard from './ContactCard/ContactCard'
 import PaymentCategory from './PaymentCategory/PaymentCategory'
 
@@ -65,7 +65,7 @@ function VendorDrawer({ opened, vendor, onClose }: VendorDrawerProps) {
       onClose={onClose}
       title="Informações do Vendedor"
       overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
-      position="bottom"
+      position="right"
     >
       <Tabs defaultValue="about">
         <Tabs.List grow>

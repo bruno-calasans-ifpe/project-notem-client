@@ -114,6 +114,40 @@ function SelectedBeach() {
           },
           paymentMethods: [{ category: 'débito', name: 'Mastercard' }],
         },
+        ratings: [
+          {
+            user: 'Fábio',
+            commentary:
+              'Vai se fuder. Que praia lixo do krai, nunca mais volto aqui, plmd',
+            stars: 1,
+            date: '11/09/2005',
+          },
+          {
+            user: 'Ana',
+            commentary: 'Praia muito boa, slk',
+            stars: 4,
+            date: '12/05/2009',
+          },
+
+          {
+            user: 'Coringa',
+            commentary: 'Bem, praia muito boa para certas coisa >:)',
+            stars: 5,
+            date: '12/05/2009',
+          },
+          {
+            user: 'Claudio',
+            commentary: 'Bem, praia muito boa para certas coisa >:)',
+            stars: 5,
+            date: '12/05/2009',
+          },
+          {
+            user: 'Chupacu',
+            commentary: 'Praia muito boa, vei. Tem muitas capivarinhas',
+            stars: 5,
+            date: '01/01/2023',
+          },
+        ],
       },
       items: [
         {
@@ -169,6 +203,40 @@ function SelectedBeach() {
           },
           paymentMethods: [{ category: 'débito', name: 'Mastercard' }],
         },
+        ratings: [
+          {
+            user: 'Fábio',
+            commentary:
+              'Vai se fuder. Que praia lixo do krai, nunca mais volto aqui, plmd',
+            stars: 1,
+            date: '11/09/2005',
+          },
+          {
+            user: 'Ana',
+            commentary: 'Praia muito boa, slk',
+            stars: 4,
+            date: '12/05/2009',
+          },
+
+          {
+            user: 'Coringa',
+            commentary: 'Bem, praia muito boa para certas coisa >:)',
+            stars: 5,
+            date: '12/05/2009',
+          },
+          {
+            user: 'Claudio',
+            commentary: 'Bem, praia muito boa para certas coisa >:)',
+            stars: 5,
+            date: '12/05/2009',
+          },
+          {
+            user: 'Chupacu',
+            commentary: 'Praia muito boa, vei. Tem muitas capivarinhas',
+            stars: 5,
+            date: '01/01/2023',
+          },
+        ],
       },
       items: [
         {
@@ -203,6 +271,40 @@ function SelectedBeach() {
           },
           paymentMethods: [{ category: 'débito', name: 'Mastercard' }],
         },
+        ratings: [
+          {
+            user: 'Fábio',
+            commentary:
+              'Vai se fuder. Que praia lixo do krai, nunca mais volto aqui, plmd',
+            stars: 1,
+            date: '11/09/2005',
+          },
+          {
+            user: 'Ana',
+            commentary: 'Praia muito boa, slk',
+            stars: 4,
+            date: '12/05/2009',
+          },
+
+          {
+            user: 'Coringa',
+            commentary: 'Bem, praia muito boa para certas coisa >:)',
+            stars: 5,
+            date: '12/05/2009',
+          },
+          {
+            user: 'Claudio',
+            commentary: 'Bem, praia muito boa para certas coisa >:)',
+            stars: 5,
+            date: '12/05/2009',
+          },
+          {
+            user: 'Chupacu',
+            commentary: 'Praia muito boa, vei. Tem muitas capivarinhas',
+            stars: 5,
+            date: '01/01/2023',
+          },
+        ],
       },
       items: [
         {

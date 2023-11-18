@@ -1,3 +1,5 @@
+import type { UserRating } from './UserRating'
+
 export type Contacts = {
   whatsapp?: string
   instagram?: string
@@ -21,4 +23,5 @@ export type Vendor = {
   rating: number
   img: string
   info: VendorExtraInfo
+  ratings: UserRating[]
 }

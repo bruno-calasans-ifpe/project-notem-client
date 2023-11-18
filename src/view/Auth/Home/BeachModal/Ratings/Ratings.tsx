@@ -1,51 +1,22 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/order */
 /* eslint-disable no-restricted-syntax */
-import {
-  Flex,
-  Text,
-  Rating,
-  Group,
-  Anchor,
-  Modal,
-  Title,
-  ScrollArea,
-} from '@mantine/core'
-import { BeachRating } from '../../../../../types/Beach'
-import { useSetState, useDisclosure } from '@mantine/hooks'
-import { useEffect } from 'react'
+import { Flex, Text, Rating, Anchor } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
 import RatingModal from './RatingsModal/RatingsModal'
-import type { RatingsData } from './ratings.type'
+import type { UserRating } from '../../../../../types/UserRating'
+import useRating from '../../../../../hook/useRating/useRating'
 
 type RatingsProps = {
-  ratings: BeachRating[]
+  ratings: UserRating[]
+  title: string
+  subtitle: string
 }
 
-function Ratings({ ratings }: RatingsProps) {
+function Ratings({ ratings, title, subtitle }: RatingsProps) {
   const [opened, { open, close }] = useDisclosure(false)
-  const [ratingsData, setRatingData] = useSetState<RatingsData>({
-    media: 0,
-    sumStars: 0,
-    quant: ratings.length,
-  })
-
-  const updateRatingsData = () => {
-    const quant = ratings.length
-    let sumStars = 0
-    let media = 0
-
-    if (quant > 0) {
-      for (const rating of ratings) {
-        sumStars += rating.stars
-      }
-      media = Math.round(sumStars / quant)
-    }
-    setRatingData({ media, sumStars, quant })
-  }
-
-  useEffect(() => {
-    updateRatingsData()
-  }, [ratings?.length])
+  const { ratingsData } = useRating(ratings)
 
   return (
     <Flex
@@ -57,27 +28,33 @@ function Ratings({ ratings }: RatingsProps) {
       <RatingModal
         opened={opened}
         close={close}
+        title={title}
+        subtitle={subtitle}
         ratings={ratings}
-        ratingData={ratingsData}
       />
-      <Group>
+      <Flex
+        align="center"
+        direction="column"
+        gap={5}
+      >
         <Flex
           align="center"
           gap={5}
         >
-          <Text>({ratingsData.media})</Text>
+          <Text>{ratingsData.media}.0</Text>
           <Rating
             value={ratingsData.media}
             readOnly
           />
         </Flex>
+
         <Text
           size="xs"
           c="dimmed"
         >
           <Anchor onClick={open}>{ratingsData.quant} avaliações no total</Anchor>
         </Text>
-      </Group>
+      </Flex>
     </Flex>
   )
 }

@@ -11,12 +11,12 @@ import {
   Textarea,
   Menu,
 } from '@mantine/core'
-import type { BeachRating } from '../../../../../types/Beach'
 import { useSetState } from '@mantine/hooks'
 import { IconEditCircle, IconTrash, IconDotsVertical } from '@tabler/icons-react'
+import type { UserRating as UR } from '../../../../../types/UserRating'
 
 type UserRatingProps = {
-  initalRating?: BeachRating
+  initalRating?: UR
 }
 
 type RatingData = {

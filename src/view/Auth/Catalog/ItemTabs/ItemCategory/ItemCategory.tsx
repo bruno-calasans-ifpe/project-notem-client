@@ -1,15 +1,23 @@
 /* eslint-disable react/require-default-props */
 import { Flex, Text, Card, Button, SimpleGrid } from '@mantine/core'
-import { Item } from '../../../../types/Item'
-import ItemCard from '../../Beach/ItemCard/ItemCard'
+import { Item } from '../../../../../types/Item'
+import ItemCard from '../../../Beach/ItemCard/ItemCard'
 
 type ItemCategoryProps = {
   category: string
   items: Item[]
   onClickShowAll?: (category: string) => void
+  onClickItem?: (item: Item) => void
+  onFavoriteItem?: (item: Item) => void
 }
 
-function ItemCategory({ category, items, onClickShowAll }: ItemCategoryProps) {
+function ItemCategory({
+  category,
+  items,
+  onClickItem,
+  onFavoriteItem,
+  onClickShowAll,
+}: ItemCategoryProps) {
   const showAllHandler = () => {
     if (onClickShowAll) {
       onClickShowAll(category)
@@ -48,6 +56,8 @@ function ItemCategory({ category, items, onClickShowAll }: ItemCategoryProps) {
             <ItemCard
               item={item}
               key={item.name}
+              onClick={onClickItem}
+              onFavorite={onFavoriteItem}
             />
           ))}
         </SimpleGrid>

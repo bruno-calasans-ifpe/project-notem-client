@@ -1,11 +1,5 @@
 import type { DangerTypes } from '../view/Auth/Home/SearchBar/Filter/Filter.type'
-
-export type BeachRating = {
-  user: string
-  stars: number
-  commentary: string
-  date: string
-}
+import type { UserRating } from './UserRating'
 
 export type Beach = {
   name: string
@@ -13,6 +7,6 @@ export type Beach = {
   distance: number
   danger: DangerTypes
   images: string[]
-  ratings: BeachRating[]
-  userRating?: BeachRating
+  ratings: UserRating[]
+  userRating?: UserRating
 }

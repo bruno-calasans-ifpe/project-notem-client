@@ -4,46 +4,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import {
-  Flex,
-  Text,
-  Tabs,
-  Rating,
-  Avatar,
-  SimpleGrid,
-  Button,
-  ActionIcon,
-  Anchor,
-  Divider,
-} from '@mantine/core'
-import { IconArrowBackUp, IconInfoCircleFilled } from '@tabler/icons-react'
+import { Flex, Button } from '@mantine/core'
+import { IconArrowBackUp } from '@tabler/icons-react'
 import Section from '../../../components/Section/Section'
-import reverseSlugify from '../../../utils/reverseSlugify'
 import type { Vendor } from '../../../types/Vendor'
 import Search from '../Home/SearchBar/Search/Search'
 import type { Item } from '../../../types/Item'
-import ItemCategory from './ItemCategory/ItemCategory'
-import ItemCard from '../Beach/ItemCard/ItemCard'
-import VendorDrawer from './VendorDrawer/VendorDrawer'
-
-type ItemsCategory = {
-  category: string
-  items: Item[]
-}
+import VendorInfo from './VendorInfo/VendorInfo'
+import ItemTabs from './ItemTabs/ItemTabs'
 
 function Catalog() {
   const { name } = useParams()
-  const [tab, setTab] = useState('Tudo')
   const [vendor, setVendor] = useState<Vendor | null>(null)
   const [items, setItems] = useState<Item[]>([])
-  const [vendorDrawer, setVendorDrawer] = useState(false)
 
   const loadVendor = () => {
     if (!name) {
       return
     }
     const loadedVendor: Vendor = {
-      name,
+      name: 'Deide Costa',
       img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png',
       rating: 5,
       info: {
@@ -62,6 +42,39 @@ function Catalog() {
           { category: 'Crédito', name: 'Visa' },
         ],
       },
+      ratings: [
+        {
+          user: 'Fábio',
+          commentary: 'Vai se fuder. Que praia lixo do krai, nunca mais volto aqui, plmd',
+          stars: 1,
+          date: '11/09/2005',
+        },
+        {
+          user: 'Ana',
+          commentary: 'Praia muito boa, slk',
+          stars: 4,
+          date: '12/05/2009',
+        },
+
+        {
+          user: 'Coringa',
+          commentary: 'Bem, praia muito boa para certas coisa >:)',
+          stars: 5,
+          date: '12/05/2009',
+        },
+        {
+          user: 'Claudio',
+          commentary: 'Bem, praia muito boa para certas coisa >:)',
+          stars: 5,
+          date: '12/05/2009',
+        },
+        {
+          user: 'Chupacu',
+          commentary: 'Praia muito boa, vei. Tem muitas capivarinhas',
+          stars: 5,
+          date: '01/01/2023',
+        },
+      ],
     }
     setVendor(loadedVendor)
   }
@@ -73,89 +86,67 @@ function Catalog() {
         price: 50,
         img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
         type: 'product',
-        categories: ['cerveja'],
+        categories: ['Cerveja'],
       },
       {
         name: 'Cerveja de Chocolate',
         price: 100,
         img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
         type: 'product',
-        categories: ['cerveja'],
+        categories: ['Cerveja'],
+      },
+      {
+        name: 'Cerveja de Pimenta',
+        price: 100,
+        img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+        type: 'product',
+        categories: ['Cerveja'],
+      },
+      {
+        name: 'Cerveja Amanteigada',
+        price: 100,
+        img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+        type: 'product',
+        categories: ['Cerveja'],
+      },
+      {
+        name: 'Cerveja Skol',
+        price: 100,
+        img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
+        type: 'product',
+        categories: ['Cerveja'],
       },
       {
         name: 'Espetinho de carne de iguana',
         price: 30,
         img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
         type: 'product',
-        categories: ['espeto'],
+        categories: ['Espeto'],
       },
       {
         name: 'Espetinho de carne humana',
         price: 50,
         img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
         type: 'product',
-        categories: ['espeto'],
+        categories: ['Espeto'],
       },
       {
         name: 'Camarão ao alho e óleo',
         price: 60,
         img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
         type: 'product',
-        categories: ['camarão'],
+        categories: ['Camarão'],
       },
       {
         name: 'Bobó de camarão',
         price: 55,
         img: 'https://cdn-icons-png.flaticon.com/512/4129/4129528.png',
         type: 'product',
-        categories: ['camarão'],
+        categories: ['Camarão'],
       },
     ]
     setItems(loadedItems)
   }
-
-  const changeTabHandler = (t: string) => {
-    setTab(t)
-  }
-
-  const vendorDrawerHandler = () => {
-    setVendorDrawer((curr) => !curr)
-  }
-
-  const getItemsFromCategory = (category: string) => {
-    return items.filter((item) => item.categories.includes(category.toLowerCase()))
-  }
-
-  const organizeItemsPerCategory = () => {
-    const categories: string[] = []
-
-    for (const item of items) {
-      for (const category of item.categories) {
-        if (!categories.includes(category)) {
-          categories.push(category)
-        }
-      }
-    }
-
-    const itemsPerCategory: ItemsCategory[] = [
-      {
-        category: 'Tudo',
-        items,
-      },
-    ]
-
-    for (const category of categories) {
-      itemsPerCategory.push({
-        category,
-        items: getItemsFromCategory(category),
-      })
-    }
-
-    return itemsPerCategory
-  }
-
-  const itemsPerCategory = organizeItemsPerCategory()
-  const currentItems = getItemsFromCategory(tab)
 
   useEffect(() => {
     if (name) {
@@ -181,56 +172,7 @@ function Catalog() {
             justify="space-between"
             align="center"
           >
-            <Flex
-              gap={5}
-              align="center"
-            >
-              <Avatar
-                src={vendor?.img}
-                w={50}
-                h={50}
-              />
-              <Flex
-                align="center"
-                gap={10}
-              >
-                <Text
-                  size="lg"
-                  fw="bold"
-                  onClick={vendorDrawerHandler}
-                  style={{
-                    cursor: 'pointer',
-                  }}
-                >
-                  {reverseSlugify(name!)}
-                </Text>
-
-                <Flex
-                  gap={5}
-                  align="center"
-                >
-                  <Rating
-                    count={1}
-                    value={vendor?.rating}
-                    readOnly
-                  />
-                  <Text
-                    size="lg"
-                    fw="400"
-                  >
-                    {vendor?.rating}.0
-                  </Text>
-                </Flex>
-              </Flex>
-
-              {vendor && (
-                <VendorDrawer
-                  opened={vendorDrawer}
-                  vendor={vendor}
-                  onClose={vendorDrawerHandler}
-                />
-              )}
-            </Flex>
+            {vendor && <VendorInfo vendor={vendor} />}
             <Button
               variant="subtle"
               leftSection={<IconArrowBackUp />}
@@ -240,54 +182,12 @@ function Catalog() {
           </Flex>
           <Search placeholder="Pesquiser por um produto ou serviço" />
         </Flex>
-        <Divider />
-        <Tabs
-          value={tab}
-          onChange={changeTabHandler}
-          orientation="vertical"
-          variant="pills"
-        >
-          <Tabs.List mr={10}>
-            {itemsPerCategory.map(({ category }) => (
-              <Tabs.Tab
-                value={category}
-                key={category}
-              >
-                {category}
-              </Tabs.Tab>
-            ))}
-          </Tabs.List>
-
-          <Tabs.Panel value="Tudo">
-            <Flex
-              direction="column"
-              pl={10}
-              gap={5}
-            >
-              {itemsPerCategory.slice(1).map(({ category, items }) => (
-                <ItemCategory
-                  category={category}
-                  items={items.slice(0, 4)}
-                  key={category}
-                  onClickShowAll={changeTabHandler}
-                />
-              ))}
-            </Flex>
-          </Tabs.Panel>
-          {/* except the first category (all) */}
-          {tab !== 'Tudo' && (
-            <Tabs.Panel value={tab}>
-              <SimpleGrid cols={4}>
-                {currentItems.map((item) => (
-                  <ItemCard
-                    item={item}
-                    key={item.name}
-                  />
-                ))}
-              </SimpleGrid>
-            </Tabs.Panel>
-          )}
-        </Tabs>
+        <ItemTabs
+          items={items}
+          defaultTab="Tudo"
+          onClickItem={console.log}
+          onFavoriteItem={console.log}
+        />
       </Flex>
     </Section>
   )

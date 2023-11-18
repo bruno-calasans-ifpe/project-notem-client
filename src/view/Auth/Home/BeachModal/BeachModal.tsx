@@ -58,7 +58,11 @@ function BeachModal({ opened, close, beach }: BeachModalProps) {
               {beach.name}
             </Title>
 
-            <Ratings ratings={beach.ratings} />
+            <Ratings
+              title="Avaliações da Praia"
+              subtitle={beach.name}
+              ratings={beach.ratings}
+            />
           </Flex>
 
           <Flex
