@@ -1,12 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable import/order */
 /* eslint-disable react/require-default-props */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-restricted-syntax */
-import { Flex, SimpleGrid, Tabs, Text } from '@mantine/core'
-import { useState } from 'react'
+import { Anchor, Flex, SimpleGrid, Tabs, Text } from '@mantine/core'
+import { useState, useEffect } from 'react'
 import ItemCard from '../../Beach/ItemCard/ItemCard'
 import ItemCategory from './ItemCategory/ItemCategory'
 import type { Item } from '../../../../types/Item'
+import { Link, useSearchParams } from 'react-router-dom'
 
 type ItemTabsProps = {
   items: Item[]
@@ -22,23 +25,26 @@ type ItemsCategory = {
 
 function ItemTabs({ defaultTab, items, onClickItem, onFavoriteItem }: ItemTabsProps) {
   const [tab, setTab] = useState(defaultTab)
+  const [search] = useSearchParams()
 
-  const changeTabHandler = (selectTab: string) => {
-    setTab(selectTab)
+  const changeTabHandler = () => {
+    const category = search.get('category')
+    if (category) {
+      setTab(category)
+    }
   }
 
   const getItemsFromCategory = (category: string) => {
-    return items.filter((item) => item.categories.includes(category))
+    return items.filter((item) => item.category === category)
   }
 
   const organizeItemsPerCategory = () => {
     const categories: string[] = []
 
     for (const item of items) {
-      for (const category of item.categories) {
-        if (!categories.includes(category)) {
-          categories.push(category)
-        }
+      const category = item.category
+      if (!categories.includes(category)) {
+        categories.push(category)
       }
     }
 
@@ -62,21 +68,30 @@ function ItemTabs({ defaultTab, items, onClickItem, onFavoriteItem }: ItemTabsPr
   const itemsPerCategory = organizeItemsPerCategory()
   const currentItems = getItemsFromCategory(tab)
 
+  useEffect(() => {
+    changeTabHandler()
+  }, [search.get('category')])
+
   return (
     <Tabs
       value={tab}
-      onChange={changeTabHandler}
       orientation="vertical"
       variant="pills"
     >
       <Tabs.List mr={10}>
         {itemsPerCategory.map(({ category }) => (
-          <Tabs.Tab
-            value={category}
+          <Link
+            to={`?category=${category}`}
             key={category}
+            style={{ color: 'black' }}
           >
-            {category}
-          </Tabs.Tab>
+            <Tabs.Tab
+              value={category}
+              w="100%"
+            >
+              {category}
+            </Tabs.Tab>
+          </Link>
         ))}
       </Tabs.List>
 

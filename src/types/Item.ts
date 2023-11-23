@@ -1,3 +1,5 @@
+import type { UserRating } from './UserRating'
+
 export type ItemType = 'product' | 'service'
 
 export type Item = {
@@ -5,5 +7,8 @@ export type Item = {
   price: number
   img: string
   type: ItemType
-  categories: string[]
+  category: string
+  tags: string[]
+  desc: string
+  ratings: UserRating[]
 }

@@ -4,6 +4,7 @@ import { IconStar, IconStarFilled } from '@tabler/icons-react'
 import { useState } from 'react'
 import ActionIconOverlay from '../../../../components/Overlay/Overlay'
 import type { Item } from '../../../../types/Item'
+import ItemBadges from './ItemBadges/ItemBadges'
 
 type ItemCardProps = {
   item: Item
@@ -53,25 +54,7 @@ function ItemCard({ item, onClick, onFavorite }: ItemCardProps) {
           mb="xs"
           gap={5}
         >
-          <Flex
-            gap={5}
-            direction="column"
-          >
-            <Badge
-              size="xs"
-              color={item.type === 'product' ? 'cyan' : 'grape'}
-            >
-              {item.type === 'product' ? 'produto' : 'serviço'}
-            </Badge>
-            {item.categories.map((category) => (
-              <Badge
-                size="xs"
-                key={category}
-              >
-                {category}
-              </Badge>
-            ))}
-          </Flex>
+          <ItemBadges item={item} />
           <Text size="sm">{item.name}</Text>
           <Text
             size="sm"
