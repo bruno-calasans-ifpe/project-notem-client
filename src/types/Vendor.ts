@@ -1,4 +1,5 @@
 import type { UserRating } from './UserRating'
+import type { Item } from './Item'
 
 export type Contacts = {
   whatsapp?: string
@@ -19,9 +20,12 @@ export type VendorExtraInfo = {
 }
 
 export type Vendor = {
+  id: string
+  beachId: string
   name: string
   rating: number
   img: string
   info: VendorExtraInfo
   ratings: UserRating[]
+  items: Item[]
 }

@@ -1,7 +1,8 @@
-import type { DangerTypes } from '../view/Auth/Home/SearchBar/Filter/Filter.type'
+import type { DangerTypes } from '../components/Filter/Filter.type'
 import type { UserRating } from './UserRating'
 
 export type Beach = {
+  id: string
   name: string
   location: string
   distance: number

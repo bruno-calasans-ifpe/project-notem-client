@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom'
 import BeachModal from '../BeachModal/BeachModal'
 import type { Beach } from '../../../../types/Beach'
 import ActionIconOverlay from '../../../../components/Overlay/Overlay'
-import slug from '../../../../utils/slug'
 
 type BeachCardProps = {
   beach: Beach
@@ -66,7 +65,7 @@ function BeachCard({ beach }: BeachCardProps) {
           {beach.location}
         </Text>
 
-        <Link to={`/beach/${slug(beach.name)}`}>
+        <Link to={`/beach/${beach.id}`}>
           <Button
             variant="light"
             color="blue"

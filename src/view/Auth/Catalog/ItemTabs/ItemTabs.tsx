@@ -4,12 +4,13 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-restricted-syntax */
-import { Anchor, Flex, SimpleGrid, Tabs, Text } from '@mantine/core'
+import { Flex, SimpleGrid, Tabs, Text } from '@mantine/core'
 import { useState, useEffect } from 'react'
-import ItemCard from '../../Beach/ItemCard/ItemCard'
-import ItemCategory from './ItemCategory/ItemCategory'
-import type { Item } from '../../../../types/Item'
+import ItemCard from '../../../../components/ItemCard/ItemCard'
+import ItemCategory from './components/ItemCategory'
+import type { Item, ItemType } from '../../../../types/Item'
 import { Link, useSearchParams } from 'react-router-dom'
+import getUniqueValues from '../../../../utils/getUniqueValues'
 
 type ItemTabsProps = {
   items: Item[]
@@ -27,26 +28,29 @@ function ItemTabs({ defaultTab, items, onClickItem, onFavoriteItem }: ItemTabsPr
   const [tab, setTab] = useState(defaultTab)
   const [search] = useSearchParams()
 
-  const changeTabHandler = () => {
-    const category = search.get('category')
-    if (category) {
-      setTab(category)
-    }
-  }
-
   const getItemsFromCategory = (category: string) => {
     return items.filter((item) => item.category === category)
   }
 
-  const organizeItemsPerCategory = () => {
-    const categories: string[] = []
+  const getItemsFromType = (type: ItemType) => {
+    return items.filter((item) => item.type === type)
+  }
 
-    for (const item of items) {
-      const category = item.category
-      if (!categories.includes(category)) {
-        categories.push(category)
-      }
+  const getItems = (tab: string) => {
+    if (tab === 'Produto') {
+      return getItemsFromType('product')
     }
+
+    if (tab === 'Serviço') {
+      return getItemsFromType('service')
+    }
+
+    return getItemsFromCategory(tab)
+  }
+
+  const organizeItemsPerCategory = () => {
+    const allCategories = items.map(({ category }) => category)
+    const categories = getUniqueValues(allCategories)
 
     const itemsPerCategory: ItemsCategory[] = [
       {
@@ -54,6 +58,23 @@ function ItemTabs({ defaultTab, items, onClickItem, onFavoriteItem }: ItemTabsPr
         items,
       },
     ]
+
+    const products = getItemsFromType('product')
+    const services = getItemsFromType('service')
+
+    if (products.length > 0) {
+      itemsPerCategory.push({
+        category: 'Produto',
+        items: products,
+      })
+    }
+
+    if (services.length > 0) {
+      itemsPerCategory.push({
+        category: 'Serviços',
+        items: services,
+      })
+    }
 
     for (const category of categories) {
       itemsPerCategory.push({
@@ -65,12 +86,15 @@ function ItemTabs({ defaultTab, items, onClickItem, onFavoriteItem }: ItemTabsPr
     return itemsPerCategory
   }
 
-  const itemsPerCategory = organizeItemsPerCategory()
-  const currentItems = getItemsFromCategory(tab)
-
   useEffect(() => {
-    changeTabHandler()
+    const searchCategory = search.get('category')
+    if (searchCategory) {
+      setTab(searchCategory)
+    }
   }, [search.get('category')])
+
+  const itemsPerCategory = organizeItemsPerCategory()
+  const currentItems = getItems(tab)
 
   return (
     <Tabs
@@ -101,24 +125,27 @@ function ItemTabs({ defaultTab, items, onClickItem, onFavoriteItem }: ItemTabsPr
           pl={10}
           gap={5}
         >
-          {itemsPerCategory.slice(1).map(({ category, items }) => (
-            <ItemCategory
-              key={category}
-              category={category}
-              items={items.slice(0, 4)}
-              onClickItem={onClickItem}
-              onFavoriteItem={onFavoriteItem}
-              onClickShowAll={changeTabHandler}
-            />
-          ))}
+          {itemsPerCategory
+            .filter(({ category }) => !['Tudo', 'Produto', 'Serviço'].includes(category))
+            .map(({ category, items }) => (
+              <ItemCategory
+                key={category}
+                category={category}
+                items={items.slice(0, 4)}
+                onClickItem={onClickItem}
+                onFavoriteItem={onFavoriteItem}
+                onClickShowAll={setTab}
+              />
+            ))}
         </Flex>
       </Tabs.Panel>
       {/* except the first category (all) */}
       {tab !== defaultTab && (
         <Tabs.Panel value={tab}>
           <Flex
-            gap={10}
             direction="column"
+            pl={10}
+            gap={5}
           >
             <Flex
               align="center"
@@ -141,12 +168,16 @@ function ItemTabs({ defaultTab, items, onClickItem, onFavoriteItem }: ItemTabsPr
             </Flex>
             <SimpleGrid cols={4}>
               {currentItems.map((item) => (
-                <ItemCard
-                  item={item}
+                <Link
+                  to={`?item=${item.id}`}
                   key={item.name}
-                  onClick={onClickItem}
-                  onFavorite={onFavoriteItem}
-                />
+                >
+                  <ItemCard
+                    item={item}
+                    onClick={onClickItem}
+                    onFavorite={onFavoriteItem}
+                  />
+                </Link>
               ))}
             </SimpleGrid>
           </Flex>

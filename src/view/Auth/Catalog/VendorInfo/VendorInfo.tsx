@@ -1,8 +1,8 @@
 import { Flex, Avatar, Anchor, Text, Divider, Rating } from '@mantine/core'
 import { useState } from 'react'
 import type { Vendor } from '../../../../types/Vendor'
-import RatingsDrawer from './RatingsDrawer/RatingsDrawer'
-import VendorDrawer from './VendorDrawer/VendorDrawer'
+import RatingsDrawer from './components/RatingsDrawer'
+import VendorDrawer from './components/VendorDrawer/VendorDrawer'
 
 type VendorInfoProps = {
   vendor: Vendor

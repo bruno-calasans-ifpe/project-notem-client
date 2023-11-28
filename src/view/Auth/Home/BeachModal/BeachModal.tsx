@@ -8,9 +8,9 @@
 import { Text, Button, Modal, Flex, Title, Image } from '@mantine/core'
 import { Link } from 'react-router-dom'
 import slugify from 'slugify'
-import ModalSection from './ModalSection/ModalSection'
-import Ratings from './Ratings/Ratings'
-import UserRating from './UserRating/UserRating'
+import ModalSection from './components/ModalSection'
+import Ratings from '../../../../components/Ratings/Ratings'
+import UserRating from './components/UserRating'
 import CustomCarousel from '../../../../components/CustomCarousel/CustomCarousel'
 import type { Beach } from '../../../../types/Beach'
 

@@ -8,7 +8,7 @@ export const Container = styled.section`
   align-items: center;
   gap: 10px;
   padding: 40px 30px;
-  width: 90%;
+  width: 100%;
   border-radius: 4px;
   overflow: hidden;
   ${fixContentWidth('1000px')}

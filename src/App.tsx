@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react/no-unescaped-entities */
 
@@ -26,7 +27,6 @@ function App() {
       email: 'test@gmail.com',
       accountType: 'cliente',
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -41,11 +41,11 @@ function App() {
                 element={<AuthHome />}
               />
               <Route
-                path="/beach/:name"
+                path="/beach/:beachId"
                 element={<Beach />}
               />
               <Route
-                path="/vendor/:name"
+                path="/vendor/:vendorId"
                 element={<Catalog />}
               />
             </>

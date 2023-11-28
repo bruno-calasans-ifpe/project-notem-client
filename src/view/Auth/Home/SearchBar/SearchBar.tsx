@@ -5,9 +5,9 @@ import { IconCurrentLocation } from '@tabler/icons-react'
 import { useState } from 'react'
 
 // components
-import Filter from './Filter/Filter'
-import Sorter from './Sorter/Sorter'
-import Search from './Search/Search'
+import Filter from '../../../../components/Filter/Filter'
+import Sorter from '../../../../components/Sorter/Sorter'
+import Search from '../../../../components/Search/Search'
 
 function SearchBar() {
   const [currentLocation, setCurrentLocation] = useState(false)
